@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Themed Alola Pokémon Selector (Max Data)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .main-view, .list-view {
+            max-width: 850px; /* Increased width for stats */
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .list-view {
+            display: none; 
+        }
+        h1 {
+            color: #1a73e8;
+            text-align: center;
+        }
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #e9e9e9;
+        }
+        .control-group label, .control-group select {
+            display: block;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        .control-group select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .legendary-controls {
+            grid-column: 1 / 4;
+            display: flex;
+            justify-content: space-around;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 10px; 
+        }
+        button:hover {
+            background-color: #155bb5;
+        }
+        #result-box {
+            min-height: 180px;
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #ffde00;
+            border-radius: 8px;
+            background-color: #fff;
+            text-align: center;
+        }
+        #pokemon-name {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #cc0000;
+            text-shadow: 1px 1px 1px #888;
+            margin-bottom: 15px;
+        }
+        #pokemon-category-info {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+        .stats-table {
+            width: 100%;
+            margin-bottom: 15px;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+        .stats-table td {
+            text-align: center;
+            padding: 4px 0;
+            border: 1px solid #eee;
+        }
+        .stats-table tr:first-child td {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+        .move-table {
+            width: 100%;
+            margin: 15px auto;
+            border-collapse: collapse;
+        }
+        .move-table th, .move-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            font-size: 0.9em;
+        }
+        .move-table th {
+            background-color: #eee;
+        }
+        
+        /* Entire List View Styling */
+        .list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .pokemon-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .card-name {
+            font-size: 1.5em;
+            color: #1a73e8;
+            margin-bottom: 5px;
+        }
+        .card-details {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-view" id="main-view">
+    <h1>Themed Alola Pokémon Selector ☀️</h1>
+
+    <div class="controls-grid">
+        <div class="control-group">
+            <label for="occasion-select">Occasion/Habitat:</label>
+            <select id="occasion-select">
+                <option value="all">All Habitats</option>
+                <option value="jungle">Jungle / Forest</option>
+                <option value="desert">Desert / Mountain</option>
+                <option value="plains">Plains / Route</option>
+                <option value="city">City / Urban</option>
+                <option value="cave">Cave / Underworld</option>
+                <option value="water">Water / Beach</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="type-select">Pokémon Type:</label>
+            <select id="type-select">
+                <option value="all">All Types</option>
+                <option value="normal">Normal</option>
+                <option value="fire">Fire</option>
+                <option value="water">Water</option>
+                <option value="grass">Grass</option>
+                <option value="electric">Electric</option>
+                <option value="ice">Ice</option>
+                <option value="fighting">Fighting</option>
+                <option value="poison">Poison</option>
+                <option value="ground">Ground</option>
+                <option value="flying">Flying</option>
+                <option value="psychic">Psychic</option>
+                <option value="bug">Bug</option>
+                <option value="rock">Rock</option>
+                <option value="ghost">Ghost</option>
+                <option value="dragon">Dragon</option>
+                <option value="steel">Steel</option>
+                <option value="dark">Dark</option>
+                <option value="fairy">Fairy</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="evolution-select">Evolution Stage:</label>
+            <select id="evolution-select">
+                <option value="all">All Stages</option>
+                <option value="lowest">Lowest Evolution</option>
+                <option value="middle">Middle Evolution</option>
+                <option value="highest">Highest Evolution</option>
+            </select>
+        </div>
+        <div class="legendary-controls">
+            <label>
+                <input type="checkbox" id="include-legendary" checked>
+                Include Legendary/Mythical
+            </label>
+            <label>
+                <input type="checkbox" id="include-ultrabeast" checked>
+                Include Ultra Beasts
+            </label>
+        </div>
+    </div>
+
+    <button onclick="getRandomPokemon()">Find Themed Pokémon!</button>
+
+    <div id="result-box">
+        <p id="pokemon-name">Select your filters and go!</p>
+        <p id="pokemon-category-info"></p>
+        <div id="moves-list">
+            </div>
+    </div>
+    
+    <p style="text-align: center; font-size: 0.8em; margin-top: 15px; color: #777;">
+        <span id="history-status">The selector will avoid recent repeats.</span>
+    </p>
+
+    <button onclick="toggleListView()">View Entire List</button>
+
+</div>
+
+<div class="list-view" id="list-view">
+    <div class="list-header">
+        <h1>Full Pokémon Roster</h1>
+        <button onclick="toggleListView()" style="width: 150px;">Return to Selector</button>
+    </div>
+    <div id="full-list-content">
+        </div>
+</div>
+
+<script>
+    // --- POKÉMON DATA (MAX-SIZED ALOLA GEN VII + STATS + MOVES) ---
+    // NOTE: This data set is highly optimized to include as many Alola-specific Pokémon as possible.
+    // Base Stats added: { hp, atk, def, spa, spd, spe }
+    // Moves increased to five.
+    const pokemonData = [
+        // Starters
+        { 
+            name: "Rowlet", category: "Standard", evolution: "lowest", types: ["grass", "flying"], habitat: "jungle", 
+            stats: { hp: 68, atk: 55, def: 55, spa: 50, spd: 50, spe: 42 }, 
+            moves: [["Leafage", 40, 100, 0], ["Tackle", 40, 100, 0], ["Growl", 0, 100, 0], ["Peck", 35, 100, 0], ["Razor Leaf", 55, 95, 0]] 
+        },
+        { 
+            name: "Dartrix", category: "Standard", evolution: "middle", types: ["grass", "flying"], habitat: "jungle", 
+            stats: { hp: 78, atk: 75, def: 75, spa: 70, spd: 70, spe: 52 }, 
+            moves: [["Razor Leaf", 55, 95, 0], ["Pluck", 60, 100, 0], ["Sucker Punch", 70, 100, 0], ["Foresight", 0, 100, 0], ["Synthesis", 0, '—', 50]] 
+        },
+        { 
+            name: "Decidueye", category: "Standard", evolution: "highest", types: ["grass", "ghost"], habitat: "jungle", 
+            stats: { hp: 88, atk: 107, def: 75, spa: 100, spd: 100, spe: 70 }, 
+            moves: [["Spirit Shackle", 80, 100, 0], ["Leaf Blade", 90, 100, 0], ["Brave Bird", 120, 100, 0], ["Sucker Punch", 70, 100, 0], ["U-turn", 70, 100, 0]] 
+        },
+        { 
+            name: "Litten", category: "Standard", evolution: "lowest", types: ["fire"], habitat: "plains", 
+            stats: { hp: 45, atk: 65, def: 40, spa: 60, spd: 40, spe: 70 }, 
+            moves: [["Scratch", 40, 100, 0], ["Ember", 40, 100, 0], ["Growl", 0, 100, 0], ["Lick", 30, 100, 0], ["Fire Fang", 65, 95, 0]] 
+        },
+        { 
+            name: "Torracat", category: "Standard", evolution: "middle", types: ["fire"], habitat: "plains", 
+            stats: { hp: 65, atk: 85, def: 50, spa: 80, spd: 50, spe: 90 }, 
+            moves: [["Fire Fang", 65, 95, 0], ["Lariat", 85, 100, 0], ["Bite", 60, 100, 0], ["Roar", 0, 100, 0], ["Bulk Up", 0, '—', 0]] 
+        },
+        { 
+            name: "Incineroar", category: "Standard", evolution: "highest", types: ["fire", "dark"], habitat: "city", 
+            stats: { hp: 95, atk: 115, def: 90, spa: 80, spd: 90, spe: 60 }, 
+            moves: [["Darkest Lariat", 85, 100, 0], ["Throat Chop", 80, 100, 0], ["Flare Blitz", 120, 100, 0], ["Cross Chop", 100, 80, 0], ["U-turn", 70, 100, 0]] 
+        },
+        { 
+            name: "Popplio", category: "Standard", evolution: "lowest", types: ["water"], habitat: "water", 
+            stats: { hp: 50, atk: 54, def: 54, spa: 66, spd: 56, spe: 40 }, 
+            moves: [["Pound", 40, 100, 0], ["Water Gun", 40, 100, 0], ["Growl", 0, 100, 0], ["Aqua Jet", 40, 100, 0], ["Disarming Voice", 40, '—', 0]] 
+        },
+        { 
+            name: "Brionne", category: "Standard", evolution: "middle", types: ["water"], habitat: "water", 
+            stats: { hp: 60, atk: 69, def: 69, spa: 91, spd: 81, spe: 50 }, 
+            moves: [["Aqua Jet", 40, 100, 0], ["Disarming Voice", 40, '—', 0], ["Bubble Beam", 65, 100, 0], ["Encore", 0, 100, 0], ["Ice Beam", 90, 100, 0]] 
+        },
+        { 
+            name: "Primarina", category: "Standard", evolution: "highest", types: ["water", "fairy"], habitat: "water", 
+            stats: { hp: 80, atk: 74, def: 74, spa: 126, spd: 116, spe: 60 }, 
+            moves: [["Sparkling Aria", 90, 100, 0], ["Moonblast", 95, 100, 0], ["Hydro Pump", 110, 80, 0], ["Ice Beam", 90, 100, 0], ["Psychic", 90, 100, 0]] 
+        },
+
+        // Alolan Forms
+        { 
+            name: "Alolan Rattata", category: "Standard", evolution: "lowest", types: ["dark", "normal"], habitat: "city", 
+            stats: { hp: 30, atk: 56, def: 35, spa: 25, spd: 35, spe: 72 }, 
+            moves: [["Bite", 60, 100, 0], ["Tackle", 40, 100, 0], ["Sucker Punch", 70, 100, 0], ["Focus Energy", 0, '—', 0], ["Hyper Fang", 80, 90, 0]] 
+        },
+        { 
+            name: "Alolan Raticate", category: "Standard", evolution: "middle", types: ["dark", "normal"], habitat: "city", 
+            stats: { hp: 75, atk: 71, def: 70, spa: 40, spd: 80, spe: 77 }, 
+            moves: [["Crunch", 80, 100, 0], ["Sucker Punch", 70, 100, 0], ["Dark Pulse", 80, 100, 0], ["Hyper Fang", 80, 90, 0], ["Swords Dance", 0, '—', 0]] 
+        },
+        { 
+            name: "Alolan Raichu", category: "Standard", evolution: "highest", types: ["electric", "psychic"], habitat: "water", 
+            stats: { hp: 60, atk: 85, def: 50, spa: 95, spd: 85, spe: 110 }, 
+            moves: [["Thunderbolt", 90, 100, 0], ["Psychic", 90, 100, 0], ["Surf", 90, 100, 0], ["Focus Blast", 120, 70, 0], ["Nasty Plot", 0, '—', 0]] 
+        },
+        { 
+            name: "Alolan Sandslash", category: "Standard", evolution: "highest", types: ["ice", "steel"], habitat: "desert", 
+            stats: { hp: 75, atk: 100, def: 120, spa: 25, spd: 65, spe: 65 }, 
+            moves: [["Icicle Crash", 85, 90, 0], ["Iron Head", 80, 100, 0], ["Earthquake", 100, 100, 0], ["Metal Burst", 0, 100, 0], ["Swords Dance", 0, '—', 0]] 
+        },
+        { 
+            name: "Alolan Ninetales", category: "Standard", evolution: "highest", types: ["ice", "fairy"], habitat: "desert", 
+            stats: { hp: 73, atk: 67, def: 75, spa: 81, spd: 100, spe: 109 }, 
+            moves: [["Blizzard", 110, 70, 0], ["Dazzling Gleam", 80, 100, 0], ["Aurora Veil", 0, '—', 0], ["Moonblast", 95, 100, 0], ["Nasty Plot", 0, '—', 0]] 
+        },
+        { 
+            name: "Alolan Golem", category: "Standard", evolution: "highest", types: ["rock", "electric"], habitat: "cave", 
+            stats: { hp: 80, atk: 120, def: 130, spa: 55, spd: 65, spe: 45 }, 
+            moves: [["Heavy Slam", 0, 100, 0], ["Stone Edge", 100, 80, 0], ["Wild Charge", 90, 100, 0], ["Rock Blast", 25, 90, 0], ["Earthquake", 100, 100, 0]] 
+        },
+        { 
+            name: "Alolan Muk", category: "Standard", evolution: "highest", types: ["poison", "dark"], habitat: "city", 
+            stats: { hp: 105, atk: 105, def: 75, spa: 65, spd: 100, spe: 50 }, 
+            moves: [["Poison Jab", 80, 100, 0], ["Gunk Shot", 120, 80, 0], ["Crunch", 80, 100, 0], ["Knock Off", 65, 100, 0], ["Shadow Sneak", 40, 100, 0]] 
+        },
+        { 
+            name: "Alolan Exeggutor", category: "Standard", evolution: "highest", types: ["grass", "dragon"], habitat: "jungle", 
+            stats: { hp: 95, atk: 105, def: 85, spa: 125, spd: 75, spe: 45 }, 
+            moves: [["Draco Meteor", 130, 90, 0], ["Leaf Storm", 130, 90, 0], ["Psychic", 90, 100, 0], ["Flamethrower", 90, 100, 0], ["Synthesis", 0, '—', 50]] 
+        },
+        { 
+            name: "Alolan Marowak", category: "Standard", evolution: "highest", types: ["fire", "ghost"], habitat: "desert", 
+            stats: { hp: 60, atk: 80, def: 110, spa: 50, spd: 80, spe: 45 }, 
+            moves: [["Shadow Bone", 85, 100, 0], ["Flare Blitz", 120, 100, 0], ["Bonemerang", 50, 90, 0], ["Will-O-Wisp", 0, 85, 0], ["Swords Dance", 0, '—', 0]] 
+        },
+        
+        // New Gen 7 Standards
+        { 
+            name: "Toucannon", category: "Standard", evolution: "highest", types: ["normal", "flying"], habitat: "jungle", 
+            stats: { hp: 80, atk: 120, def: 75, spa: 75, spd: 75, spe: 60 }, 
+            moves: [["Beak Blast", 100, 100, 0], ["Brave Bird", 120, 100, 0], ["Bullet Seed", 25, 100, 0], ["Roost", 0, '—', 50], ["U-turn", 70, 100, 0]] 
+        },
+        { 
+            name: "Vikavolt", category: "Standard", evolution: "highest", types: ["bug", "electric"], habitat: "jungle", 
+            stats: { hp: 77, atk: 70, def: 90, spa: 145, spd: 75, spe: 43 }, 
+            moves: [["Thunderbolt", 90, 100, 0], ["Bug Buzz", 90, 100, 0], ["Energy Ball", 90, 100, 0], ["Discharge", 80, 100, 0], ["Volt Switch", 70, 100, 0]] 
+        },
+        { 
+            name: "Lycanroc (Dusk)", category: "Standard", evolution: "highest", types: ["rock"], habitat: "desert", 
+            stats: { hp: 75, atk: 117, def: 65, spa: 55, spd: 65, spe: 110 }, 
+            moves: [["Accelerock", 40, 100, 0], ["Stone Edge", 100, 80, 0], ["Close Combat", 120, 100, 0], ["Swords Dance", 0, '—', 0], ["Crunch", 80, 100, 0]] 
+        },
+        { 
+            name: "Toxapex", category: "Standard", evolution: "highest", types: ["poison", "water"], habitat: "water", 
+            stats: { hp: 50, atk: 63, def: 152, spa: 53, spd: 142, spe: 35 }, 
+            moves: [["Baneful Bunker", 0, '—', 0], ["Recover", 0, '—', 50], ["Liquidation", 85, 100, 0], ["Haze", 0, '—', 0], ["Toxic", 0, 90, 0]] 
+        },
+        { 
+            name: "Lurantis", category: "Standard", evolution: "highest", types: ["grass"], habitat: "jungle", 
+            stats: { hp: 70, atk: 105, def: 90, spa: 80, spd: 90, spe: 45 }, 
+            moves: [["Leaf Blade", 90, 100, 0], ["Solar Blade", 125, 100, 0], ["Synthesis", 0, '—', 50], ["Superpower", 120, 100, 0], ["Leech Life", 80, 100, 0]] 
+        },
+        { 
+            name: "Salazzle", category: "Standard", evolution: "highest", types: ["poison", "fire"], habitat: "cave", 
+            stats: { hp: 68, atk: 64, def: 60, spa: 111, spd: 60, spe: 117 }, 
+            moves: [["Flamethrower", 90, 100, 0], ["Sludge Bomb", 90, 100, 0], ["Nasty Plot", 0, '—', 0], ["Dragon Pulse", 85, 100, 0], ["Fire Blast", 110, 85, 0]] 
+        },
+        { 
+            name: "Tsareena", category: "Standard", evolution: "highest", types: ["grass"], habitat: "jungle", 
+            stats: { hp: 72, atk: 120, def: 98, spa: 50, spd: 98, spe: 72 }, 
+            moves: [["Trop Kick", 70, 100, 0], ["Power Whip", 120, 85, 0], ["High Jump Kick", 130, 90, 0], ["Acrobatics", 55, 100, 0], ["Play Rough", 90, 90, 0]] 
+        },
+        { 
+            name: "Mimikyu", category: "Standard", evolution: "highest", types: ["ghost", "fairy"], habitat: "cave", 
+            stats: { hp: 55, atk: 90, def: 80, spa: 50, spd: 105, spe: 96 }, 
+            moves: [["Shadow Sneak", 40, 100, 0], ["Play Rough", 90, 90, 0], ["Swords Dance", 0, '—', 0], ["Will-O-Wisp", 0, 85, 0], ["Shadow Claw", 70, 100, 0]] 
+        },
+        { 
+            name: "Kommo-o", category: "Standard", evolution: "highest", types: ["dragon", "fighting"], habitat: "desert", 
+            stats: { hp: 75, atk: 110, def: 125, spa: 100, spd: 105, spe: 85 }, 
+            moves: [["Clanging Scales", 110, 100, 0], ["Close Combat", 120, 100, 0], ["Poison Jab", 80, 100, 0], ["Dragon Claw", 80, 100, 0], ["Swords Dance", 0, '—', 0]] 
+        },
+
+        // Legendary/Mythical Pokémon (Type: Null included)
+        { 
+            name: "Type: Null", category: "Legendary", evolution: "lowest", types: ["normal"], habitat: "city", 
+            stats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 59 }, 
+            moves: [["Multi-Attack", 90, 100, 0], ["Iron Head", 80, 100, 0], ["Double Edge", 120, 100, 0], ["X-Scissor", 80, 100, 0], ["U-turn", 70, 100, 0]] 
+        },
+        { 
+            name: "Silvally", category: "Legendary", evolution: "highest", types: ["normal"], habitat: "city", 
+            stats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 }, 
+            moves: [["Multi-Attack", 90, 100, 0], ["Double Edge", 120, 100, 0], ["Parting Shot", 0, 100, 0], ["Flamethrower", 90, 100, 0], ["Ice Beam", 90, 100, 0]] 
+        },
+        { 
+            name: "Tapu Koko", category: "Legendary", evolution: "highest", types: ["electric", "fairy"], habitat: "all", 
+            stats: { hp: 70, atk: 115, def: 85, spa: 95, spd: 75, spe: 130 }, 
+            moves: [["Thunderbolt", 90, 100, 0], ["Dazzling Gleam", 80, 100, 0], ["Brave Bird", 120, 100, 0], ["Nature's Madness", 0, 90, 0], ["Volt Switch", 70, 100, 0]] 
+        },
+        { 
+            name: "Solgaleo", category: "Legendary", evolution: "highest", types: ["psychic", "steel"], habitat: "all", 
+            stats: { hp: 137, atk: 137, def: 107, spa: 113, spd: 89, spe: 97 }, 
+            moves: [["Sunsteel Strike", 100, 100, 0], ["Flare Blitz", 120, 100, 0], ["Zen Headbutt", 80, 90, 0], ["Cosmic Power", 0, '—', 0], ["Wild Charge", 90, 100, 0]] 
+        },
+        { 
+            name: "Lunala", category: "Legendary", evolution: "highest", types: ["psychic", "ghost"], habitat: "all", 
+            stats: { hp: 137, atk: 113, def: 89, spa: 137, spd: 107, spe: 97 }, 
+            moves: [["Moongeist Beam", 100, 100, 0], ["Shadow Ball", 80, 100, 0], ["Focus Blast", 120, 70, 0], ["Cosmic Power", 0, '—', 0], ["Ice Beam", 90, 100, 0]] 
+        },
+        
+        // Ultra Beasts (UBs)
+        { 
+            name: "Nihilego (UB-01)", category: "Ultra Beast", evolution: "highest", types: ["rock", "poison"], habitat: "all", 
+            stats: { hp: 109, atk: 53, def: 47, spa: 127, spd: 131, spe: 103 }, 
+            moves: [["Power Gem", 80, 100, 0], ["Venoshock", 65, 100, 0], ["Acid Spray", 40, 100, 0], ["Mirror Coat", 0, 100, 0], ["Sludge Wave", 95, 100, 0]] 
+        },
+        { 
+            name: "Buzzwole (UB-02)", category: "Ultra Beast", evolution: "highest", types: ["bug", "fighting"], habitat: "all", 
+            stats: { hp: 107, atk: 139, def: 139, spa: 53, spd: 53, spe: 79 }, 
+            moves: [["Leech Life", 80, 100, 0], ["Superpower", 120, 100, 0], ["Lunge", 80, 100, 0], ["Hammer Arm", 100, 90, 0], ["Ice Punch", 75, 100, 0]] 
+        },
+        { 
+            name: "Pheromosa (UB-02)", category: "Ultra Beast", evolution: "highest", types: ["bug", "fighting"], habitat: "all", 
+            stats: { hp: 71, atk: 137, def: 37, spa: 137, spd: 37, spe: 151 }, 
+            moves: [["Lunge", 80, 100, 0], ["High Jump Kick", 130, 90, 0], ["Ice Beam", 90, 100, 0], ["U-turn", 70, 100, 0], ["Quiver Dance", 0, '—', 0]] 
+        }
+    ];
+
+    const history = [];
+    const HISTORY_SIZE = 8; 
+
+    // --- Core Logic ---
+
+    function generateMoveTable(moves) {
+        let html = '<h3>Known Moves</h3><table class="move-table"><thead><tr><th>Move</th><th>Power (DMG)</th><th>Accuracy (ACC)</th><th>Health (Heal)</th></tr></thead><tbody>';
+        
+        moves.forEach(move => {
+            const [name, power, acc, health] = move;
+            const powerDisplay = power > 0 ? power : 'N/A';
+            const healthDisplay = health > 0 ? health + '%' : 'N/A';
+            const accDisplay = acc !== 0 ? acc : '—';
+
+            html += `<tr><td>${name}</td><td>${powerDisplay}</td><td>${accDisplay}</td><td>${healthDisplay}</td></tr>`;
+        });
+
+        html += '</tbody></table>';
+        return html;
+    }
+
+    function generateStatsTable(stats) {
+        if (!stats) return '';
+        let html = '<h3>Base Stats</h3><table class="stats-table">';
+        
+        // Header Row
+        html += '<tr><td>HP</td><td>ATK</td><td>DEF</td><td>SPA</td><td>SPD</td><td>SPE</td></tr>';
+        
+        // Data Row
+        html += `<tr><td>${stats.hp}</td><td>${stats.atk}</td><td>${stats.def}</td><td>${stats.spa}</td><td>${stats.spd}</td><td>${stats.spe}</td></tr>`;
+        
+        html += '</table>';
+        return html;
+    }
+
+    function getRandomPokemon() {
+        const occasionFilter = document.getElementById('occasion-select').value;
+        const typeFilter = document.getElementById('type-select').value;
+        const evolutionFilter = document.getElementById('evolution-select').value;
+        const includeLegendary = document.getElementById('include-legendary').checked;
+        const includeUltraBeast = document.getElementById('include-ultrabeast').checked;
+
+        const filteredList = pokemonData.filter(p => {
+            const isLegendary = p.category === 'Legendary' || p.category === 'Mythical';
+            const isUltraBeast = p.category === 'Ultra Beast';
+            
+            if (isLegendary && !includeLegendary) return false;
+            if (isUltraBeast && !includeUltraBeast) return false;
+
+            if (p.category === 'Standard') {
+                if (occasionFilter !== 'all' && p.habitat !== occasionFilter) return false;
+                if (evolutionFilter !== 'all' && p.evolution !== evolutionFilter) return false;
+            }
+            
+            if (typeFilter !== 'all' && !p.types.includes(typeFilter)) return false;
+
+            return true;
+        });
+
+        let availablePokemon = filteredList.filter(p => !history.includes(p.name));
+
+        const resultName = document.getElementById('pokemon-name');
+        const movesListElement = document.getElementById('moves-list');
+        const historyStatus = document.getElementById('history-status');
+        const categoryInfo = document.getElementById('pokemon-category-info');
+
+        if (filteredList.length === 0) {
+            resultName.textContent = "No Pokémon available with current filters.";
+            categoryInfo.textContent = "Try adjusting your filters!";
+            movesListElement.innerHTML = '';
+            historyStatus.textContent = "History tracking is paused.";
+            return;
+        }
+
+        if (availablePokemon.length === 0) {
+            availablePokemon = filteredList;
+            history.length = 0; 
+            console.log("History reset to allow for a new selection.");
+        }
+
+        const randomIndex = Math.floor(Math.random() * availablePokemon.length);
+        const selectedPokemon = availablePokemon[randomIndex];
+
+        // Update display 
+        resultName.textContent = selectedPokemon.name;
+        categoryInfo.innerHTML = `Category: ${selectedPokemon.category} | Types: ${selectedPokemon.types.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(', ')} | Evolution Stage: ${selectedPokemon.evolution.charAt(0).toUpperCase() + selectedPokemon.evolution.slice(1)}`;
+        
+        // Combine Stats and Moves tables
+        movesListElement.innerHTML = generateStatsTable(selectedPokemon.stats) + generateMoveTable(selectedPokemon.moves);
+
+        // Update history
+        history.push(selectedPokemon.name);
+        if (history.length > HISTORY_SIZE) {
+            history.shift(); 
+        }
+        
+        historyStatus.textContent = `Last ${history.length} selections (No Repetition): ${history.join(', ')}`;
+    }
+
+    // --- Entire List View Logic ---
+
+    function generateFullListContent() {
+        const listContainer = document.getElementById('full-list-content');
+        listContainer.innerHTML = ''; 
+
+        pokemonData.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'pokemon-card';
+            
+            const nameEl = document.createElement('div');
+            nameEl.className = 'card-name';
+            nameEl.textContent = p.name;
+            
+            const detailsEl = document.createElement('div');
+            detailsEl.className = 'card-details';
+            detailsEl.innerHTML = `
+                Category: ${p.category} | 
+                Evolution: ${p.evolution.charAt(0).toUpperCase() + p.evolution.slice(1)} | 
+                Types: ${p.types.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(', ')} |
+                Habitat: ${p.habitat.charAt(0).toUpperCase() + p.habitat.slice(1)}
+            `;
+
+            card.appendChild(nameEl);
+            card.appendChild(detailsEl);
+            card.innerHTML += generateStatsTable(p.stats);
+            card.innerHTML += generateMoveTable(p.moves);
+            
+            listContainer.appendChild(card);
+        });
+    }
+
+    function toggleListView() {
+        const mainView = document.getElementById('main-view');
+        const listView = document.getElementById('list-view');
+
+        if (mainView.style.display !== 'none') {
+            generateFullListContent(); 
+            mainView.style.display = 'none';
+            listView.style.display = 'block';
+        } else {
+            listView.style.display = 'none';
+            mainView.style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
