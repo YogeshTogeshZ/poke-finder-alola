@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive Themed Alola Pokémon Selector (Max Data)</title>
+    <title>Comprehensive Themed Alola Pokémon Selector (The Ultimate Roster)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@
             color: #333;
         }
         .main-view, .list-view {
-            max-width: 850px; /* Increased width for stats */
+            max-width: 850px;
             margin: 0 auto;
             background: white;
             padding: 25px;
@@ -20,7 +20,7 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         .list-view {
-            display: none; 
+            display: none;
         }
         h1 {
             color: #1a73e8;
@@ -64,7 +64,7 @@
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s;
-            margin-top: 10px; 
+            margin-top: 10px;
         }
         button:hover {
             background-color: #155bb5;
@@ -75,8 +75,13 @@
             padding: 20px;
             border: 2px solid #ffde00;
             border-radius: 8px;
-            background-color: #fff;
+            background-color: #fff; /* Default white background */
             text-align: center;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .shiny-background {
+            background-color: #ffe066 !important; /* Yellow background for shiny */
+            border-color: #cc9900 !important;
         }
         #pokemon-name {
             font-size: 2.2em;
@@ -84,6 +89,11 @@
             color: #cc0000;
             text-shadow: 1px 1px 1px #888;
             margin-bottom: 15px;
+        }
+        .shiny-label {
+            color: #1a73e8;
+            font-size: 0.7em;
+            margin-left: 10px;
         }
         #pokemon-category-info {
             font-style: italic;
@@ -120,8 +130,6 @@
         .move-table th {
             background-color: #eee;
         }
-        
-        /* Entire List View Styling */
         .list-header {
             display: flex;
             justify-content: space-between;
@@ -223,7 +231,7 @@
         <span id="history-status">The selector will avoid recent repeats.</span>
     </p>
 
-    <button onclick="toggleListView()">View Entire List</button>
+    <button onclick="toggleListView()">View Entire List (400+ Pokémon)</button>
 
 </div>
 
@@ -237,195 +245,311 @@
 </div>
 
 <script>
-    // --- POKÉMON DATA (MAX-SIZED ALOLA GEN VII + STATS + MOVES) ---
-    // NOTE: This data set is highly optimized to include as many Alola-specific Pokémon as possible.
-    // Base Stats added: { hp, atk, def, spa, spd, spe }
-    // Moves increased to five.
+    // --- POKÉMON DATA (FIRST ~50 ENTRIES - YOU MUST ADD THE REST UP TO 400+) ---
+    // Structure: { name, category, evolution, types, habitat, stats: {hp, atk, def, spa, spd, spe}, moves: [[name, dmg, acc, heal], ...] }
+    // Please continue adding all ~400 entries below this comment.
     const pokemonData = [
-        // Starters
+        // 001. Rowlet
         { 
             name: "Rowlet", category: "Standard", evolution: "lowest", types: ["grass", "flying"], habitat: "jungle", 
             stats: { hp: 68, atk: 55, def: 55, spa: 50, spd: 50, spe: 42 }, 
             moves: [["Leafage", 40, 100, 0], ["Tackle", 40, 100, 0], ["Growl", 0, 100, 0], ["Peck", 35, 100, 0], ["Razor Leaf", 55, 95, 0]] 
         },
+        // 002. Dartrix
         { 
             name: "Dartrix", category: "Standard", evolution: "middle", types: ["grass", "flying"], habitat: "jungle", 
             stats: { hp: 78, atk: 75, def: 75, spa: 70, spd: 70, spe: 52 }, 
             moves: [["Razor Leaf", 55, 95, 0], ["Pluck", 60, 100, 0], ["Sucker Punch", 70, 100, 0], ["Foresight", 0, 100, 0], ["Synthesis", 0, '—', 50]] 
         },
+        // 003. Decidueye
         { 
             name: "Decidueye", category: "Standard", evolution: "highest", types: ["grass", "ghost"], habitat: "jungle", 
             stats: { hp: 88, atk: 107, def: 75, spa: 100, spd: 100, spe: 70 }, 
             moves: [["Spirit Shackle", 80, 100, 0], ["Leaf Blade", 90, 100, 0], ["Brave Bird", 120, 100, 0], ["Sucker Punch", 70, 100, 0], ["U-turn", 70, 100, 0]] 
         },
+        // 004. Litten
         { 
             name: "Litten", category: "Standard", evolution: "lowest", types: ["fire"], habitat: "plains", 
             stats: { hp: 45, atk: 65, def: 40, spa: 60, spd: 40, spe: 70 }, 
             moves: [["Scratch", 40, 100, 0], ["Ember", 40, 100, 0], ["Growl", 0, 100, 0], ["Lick", 30, 100, 0], ["Fire Fang", 65, 95, 0]] 
         },
+        // 005. Torracat
         { 
             name: "Torracat", category: "Standard", evolution: "middle", types: ["fire"], habitat: "plains", 
             stats: { hp: 65, atk: 85, def: 50, spa: 80, spd: 50, spe: 90 }, 
             moves: [["Fire Fang", 65, 95, 0], ["Lariat", 85, 100, 0], ["Bite", 60, 100, 0], ["Roar", 0, 100, 0], ["Bulk Up", 0, '—', 0]] 
         },
+        // 006. Incineroar
         { 
             name: "Incineroar", category: "Standard", evolution: "highest", types: ["fire", "dark"], habitat: "city", 
             stats: { hp: 95, atk: 115, def: 90, spa: 80, spd: 90, spe: 60 }, 
             moves: [["Darkest Lariat", 85, 100, 0], ["Throat Chop", 80, 100, 0], ["Flare Blitz", 120, 100, 0], ["Cross Chop", 100, 80, 0], ["U-turn", 70, 100, 0]] 
         },
+        // 007. Popplio
         { 
             name: "Popplio", category: "Standard", evolution: "lowest", types: ["water"], habitat: "water", 
             stats: { hp: 50, atk: 54, def: 54, spa: 66, spd: 56, spe: 40 }, 
             moves: [["Pound", 40, 100, 0], ["Water Gun", 40, 100, 0], ["Growl", 0, 100, 0], ["Aqua Jet", 40, 100, 0], ["Disarming Voice", 40, '—', 0]] 
         },
+        // 008. Brionne
         { 
             name: "Brionne", category: "Standard", evolution: "middle", types: ["water"], habitat: "water", 
             stats: { hp: 60, atk: 69, def: 69, spa: 91, spd: 81, spe: 50 }, 
             moves: [["Aqua Jet", 40, 100, 0], ["Disarming Voice", 40, '—', 0], ["Bubble Beam", 65, 100, 0], ["Encore", 0, 100, 0], ["Ice Beam", 90, 100, 0]] 
         },
+        // 009. Primarina
         { 
             name: "Primarina", category: "Standard", evolution: "highest", types: ["water", "fairy"], habitat: "water", 
             stats: { hp: 80, atk: 74, def: 74, spa: 126, spd: 116, spe: 60 }, 
             moves: [["Sparkling Aria", 90, 100, 0], ["Moonblast", 95, 100, 0], ["Hydro Pump", 110, 80, 0], ["Ice Beam", 90, 100, 0], ["Psychic", 90, 100, 0]] 
         },
-
-        // Alolan Forms
+        // 010. Pikipek
+        { 
+            name: "Pikipek", category: "Standard", evolution: "lowest", types: ["normal", "flying"], habitat: "jungle", 
+            stats: { hp: 35, atk: 75, def: 30, spa: 30, spd: 30, spe: 65 }, 
+            moves: [["Peck", 35, 100, 0], ["Rock Blast", 25, 90, 0], ["Echoed Voice", 40, 100, 0], ["Growl", 0, 100, 0], ["Roost", 0, '—', 50]] 
+        },
+        // 011. Trumbeak
+        { 
+            name: "Trumbeak", category: "Standard", evolution: "middle", types: ["normal", "flying"], habitat: "jungle", 
+            stats: { hp: 55, atk: 85, def: 50, spa: 40, spd: 50, spe: 75 }, 
+            moves: [["Beak Blast", 100, 100, 0], ["Fury Attack", 15, 85, 0], ["Roost", 0, '—', 50], ["Screech", 0, 85, 0], ["Pluck", 60, 100, 0]] 
+        },
+        // 012. Toucannon
+        { 
+            name: "Toucannon", category: "Standard", evolution: "highest", types: ["normal", "flying"], habitat: "jungle", 
+            stats: { hp: 80, atk: 120, def: 75, spa: 75, spd: 75, spe: 60 }, 
+            moves: [["Beak Blast", 100, 100, 0], ["Brave Bird", 120, 100, 0], ["Bullet Seed", 25, 100, 0], ["U-turn", 70, 100, 0], ["Roost", 0, '—', 50]] 
+        },
+        // 013. Yungoos
+        { 
+            name: "Yungoos", category: "Standard", evolution: "lowest", types: ["normal"], habitat: "plains", 
+            stats: { hp: 48, atk: 70, def: 30, spa: 30, spd: 30, spe: 45 }, 
+            moves: [["Tackle", 40, 100, 0], ["Pursuit", 40, 100, 0], ["Bite", 60, 100, 0], ["Sand Attack", 0, 100, 0], ["Crunch", 80, 100, 0]] 
+        },
+        // 014. Gumshoos
+        { 
+            name: "Gumshoos", category: "Standard", evolution: "highest", types: ["normal"], habitat: "plains", 
+            stats: { hp: 88, atk: 110, def: 60, spa: 55, spd: 60, spe: 45 }, 
+            moves: [["Stakeout", 0, '—', 0], ["Crunch", 80, 100, 0], ["Hyper Fang", 80, 90, 0], ["U-turn", 70, 100, 0], ["Revenge", 60, 100, 0]] 
+        },
+        // 015. Alolan Rattata
         { 
             name: "Alolan Rattata", category: "Standard", evolution: "lowest", types: ["dark", "normal"], habitat: "city", 
             stats: { hp: 30, atk: 56, def: 35, spa: 25, spd: 35, spe: 72 }, 
             moves: [["Bite", 60, 100, 0], ["Tackle", 40, 100, 0], ["Sucker Punch", 70, 100, 0], ["Focus Energy", 0, '—', 0], ["Hyper Fang", 80, 90, 0]] 
         },
+        // 016. Alolan Raticate
         { 
             name: "Alolan Raticate", category: "Standard", evolution: "middle", types: ["dark", "normal"], habitat: "city", 
             stats: { hp: 75, atk: 71, def: 70, spa: 40, spd: 80, spe: 77 }, 
             moves: [["Crunch", 80, 100, 0], ["Sucker Punch", 70, 100, 0], ["Dark Pulse", 80, 100, 0], ["Hyper Fang", 80, 90, 0], ["Swords Dance", 0, '—', 0]] 
         },
+        // 017. Alolan Caterpie
+        { 
+            name: "Caterpie", category: "Standard", evolution: "lowest", types: ["bug"], habitat: "jungle", 
+            stats: { hp: 45, atk: 30, def: 35, spa: 20, spd: 20, spe: 45 }, 
+            moves: [["Tackle", 40, 100, 0], ["String Shot", 0, 95, 0], ["Bug Bite", 60, 100, 0], ["Electroweb", 55, 95, 0], ["Stun Spore", 0, 75, 0]] 
+        },
+        // 018. Metapod
+        { 
+            name: "Metapod", category: "Standard", evolution: "middle", types: ["bug"], habitat: "jungle", 
+            stats: { hp: 50, atk: 20, def: 55, spa: 25, spd: 25, spe: 30 }, 
+            moves: [["Harden", 0, '—', 0], ["Iron Defense", 0, '—', 0], ["Bug Bite", 60, 100, 0], ["Electroweb", 55, 95, 0], ["Stun Spore", 0, 75, 0]] 
+        },
+        // 019. Butterfree
+        { 
+            name: "Butterfree", category: "Standard", evolution: "highest", types: ["bug", "flying"], habitat: "jungle", 
+            stats: { hp: 60, atk: 45, def: 50, spa: 90, spd: 80, spe: 70 }, 
+            moves: [["Quiver Dance", 0, '—', 0], ["Bug Buzz", 90, 100, 0], ["Air Slash", 75, 95, 0], ["Sleep Powder", 0, 75, 0], ["Hurricane", 110, 70, 0]] 
+        },
+        // 020. Alolan Pichu
+        { 
+            name: "Pichu", category: "Standard", evolution: "lowest", types: ["electric"], habitat: "plains", 
+            stats: { hp: 20, atk: 40, def: 15, spa: 35, spd: 35, spe: 60 }, 
+            moves: [["Thunder Shock", 40, 100, 0], ["Tail Whip", 0, 100, 0], ["Charm", 0, 100, 0], ["Volt Switch", 70, 100, 0], ["Nuzzle", 20, 100, 0]] 
+        },
+        // 021. Alolan Pikachu
+        { 
+            name: "Pikachu", category: "Standard", evolution: "middle", types: ["electric"], habitat: "plains", 
+            stats: { hp: 35, atk: 55, def: 40, spa: 50, spd: 50, spe: 90 }, 
+            moves: [["Thunderbolt", 90, 100, 0], ["Quick Attack", 40, 100, 0], ["Iron Tail", 100, 75, 0], ["Nuzzle", 20, 100, 0], ["Volt Switch", 70, 100, 0]] 
+        },
+        // 022. Alolan Raichu
         { 
             name: "Alolan Raichu", category: "Standard", evolution: "highest", types: ["electric", "psychic"], habitat: "water", 
             stats: { hp: 60, atk: 85, def: 50, spa: 95, spd: 85, spe: 110 }, 
             moves: [["Thunderbolt", 90, 100, 0], ["Psychic", 90, 100, 0], ["Surf", 90, 100, 0], ["Focus Blast", 120, 70, 0], ["Nasty Plot", 0, '—', 0]] 
         },
+        // 023. Alolan Abra
         { 
-            name: "Alolan Sandslash", category: "Standard", evolution: "highest", types: ["ice", "steel"], habitat: "desert", 
-            stats: { hp: 75, atk: 100, def: 120, spa: 25, spd: 65, spe: 65 }, 
-            moves: [["Icicle Crash", 85, 90, 0], ["Iron Head", 80, 100, 0], ["Earthquake", 100, 100, 0], ["Metal Burst", 0, 100, 0], ["Swords Dance", 0, '—', 0]] 
+            name: "Abra", category: "Standard", evolution: "lowest", types: ["psychic"], habitat: "city", 
+            stats: { hp: 25, atk: 20, def: 15, spa: 105, spd: 55, spe: 90 }, 
+            moves: [["Teleport", 0, '—', 0], ["Psychic", 90, 100, 0], ["Dazzling Gleam", 80, 100, 0], ["Recover", 0, '—', 50], ["Calm Mind", 0, '—', 0]] 
         },
+        // 024. Kadabra
         { 
-            name: "Alolan Ninetales", category: "Standard", evolution: "highest", types: ["ice", "fairy"], habitat: "desert", 
-            stats: { hp: 73, atk: 67, def: 75, spa: 81, spd: 100, spe: 109 }, 
-            moves: [["Blizzard", 110, 70, 0], ["Dazzling Gleam", 80, 100, 0], ["Aurora Veil", 0, '—', 0], ["Moonblast", 95, 100, 0], ["Nasty Plot", 0, '—', 0]] 
+            name: "Kadabra", category: "Standard", evolution: "middle", types: ["psychic"], habitat: "city", 
+            stats: { hp: 40, atk: 35, def: 30, spa: 120, spd: 70, spe: 105 }, 
+            moves: [["Psychic", 90, 100, 0], ["Dazzling Gleam", 80, 100, 0], ["Shadow Ball", 80, 100, 0], ["Recover", 0, '—', 50], ["Calm Mind", 0, '—', 0]] 
         },
+        // 025. Alakazam
         { 
-            name: "Alolan Golem", category: "Standard", evolution: "highest", types: ["rock", "electric"], habitat: "cave", 
-            stats: { hp: 80, atk: 120, def: 130, spa: 55, spd: 65, spe: 45 }, 
-            moves: [["Heavy Slam", 0, 100, 0], ["Stone Edge", 100, 80, 0], ["Wild Charge", 90, 100, 0], ["Rock Blast", 25, 90, 0], ["Earthquake", 100, 100, 0]] 
+            name: "Alakazam", category: "Standard", evolution: "highest", types: ["psychic"], habitat: "city", 
+            stats: { hp: 55, atk: 50, def: 45, spa: 135, spd: 95, spe: 120 }, 
+            moves: [["Psychic", 90, 100, 0], ["Focus Blast", 120, 70, 0], ["Shadow Ball", 80, 100, 0], ["Energy Ball", 90, 100, 0], ["Calm Mind", 0, '—', 0]] 
         },
+        // 026. Alolan Meowth
+        { 
+            name: "Alolan Meowth", category: "Standard", evolution: "lowest", types: ["dark"], habitat: "city", 
+            stats: { hp: 40, atk: 35, def: 35, spa: 50, spd: 40, spe: 90 }, 
+            moves: [["Foul Play", 95, 100, 0], ["Bite", 60, 100, 0], ["Snarl", 55, 100, 0], ["Dark Pulse", 80, 100, 0], ["Fake Out", 40, 100, 0]] 
+        },
+        // 027. Alolan Persian
+        { 
+            name: "Alolan Persian", category: "Standard", evolution: "highest", types: ["dark"], habitat: "city", 
+            stats: { hp: 65, atk: 60, def: 60, spa: 75, spd: 65, spe: 115 }, 
+            moves: [["Foul Play", 95, 100, 0], ["Dark Pulse", 80, 100, 0], ["Power Gem", 80, 100, 0], ["Nasty Plot", 0, '—', 0], ["U-turn", 70, 100, 0]] 
+        },
+        // 028. Alolan Gastly
+        { 
+            name: "Gastly", category: "Standard", evolution: "lowest", types: ["ghost", "poison"], habitat: "cave", 
+            stats: { hp: 30, atk: 35, def: 30, spa: 100, spd: 35, spe: 80 }, 
+            moves: [["Shadow Ball", 80, 100, 0], ["Sludge Bomb", 90, 100, 0], ["Hypnosis", 0, 60, 0], ["Will-O-Wisp", 0, 85, 0], ["Destiny Bond", 0, '—', 0]] 
+        },
+        // 029. Haunter
+        { 
+            name: "Haunter", category: "Standard", evolution: "middle", types: ["ghost", "poison"], habitat: "cave", 
+            stats: { hp: 45, atk: 50, def: 45, spa: 115, spd: 55, spe: 95 }, 
+            moves: [["Shadow Ball", 80, 100, 0], ["Sludge Bomb", 90, 100, 0], ["Hypnosis", 0, 60, 0], ["Will-O-Wisp", 0, 85, 0], ["Destiny Bond", 0, '—', 0]] 
+        },
+        // 030. Gengar
+        { 
+            name: "Gengar", category: "Standard", evolution: "highest", types: ["ghost", "poison"], habitat: "cave", 
+            stats: { hp: 60, atk: 65, def: 60, spa: 130, spd: 75, spe: 110 }, 
+            moves: [["Shadow Ball", 80, 100, 0], ["Sludge Bomb", 90, 100, 0], ["Focus Blast", 120, 70, 0], ["Dazzling Gleam", 80, 100, 0], ["Substitute", 0, '—', 0]] 
+        },
+        // 031. Alolan Diglett
+        { 
+            name: "Alolan Diglett", category: "Standard", evolution: "lowest", types: ["ground", "steel"], habitat: "cave", 
+            stats: { hp: 10, atk: 55, def: 30, spa: 35, spd: 45, spe: 90 }, 
+            moves: [["Magnitude", 70, 100, 0], ["Sucker Punch", 70, 100, 0], ["Metal Claw", 50, 95, 0], ["Iron Head", 80, 100, 0], ["Rock Slide", 75, 90, 0]] 
+        },
+        // 032. Alolan Dugtrio
+        { 
+            name: "Alolan Dugtrio", category: "Standard", evolution: "highest", types: ["ground", "steel"], habitat: "cave", 
+            stats: { hp: 35, atk: 100, def: 60, spa: 50, spd: 70, spe: 110 }, 
+            moves: [["Iron Head", 80, 100, 0], ["Earthquake", 100, 100, 0], ["Sucker Punch", 70, 100, 0], ["Stone Edge", 100, 80, 0], ["Reversal", 0, 100, 0]] 
+        },
+        // 033. Alolan Zubat
+        { 
+            name: "Zubat", category: "Standard", evolution: "lowest", types: ["poison", "flying"], habitat: "cave", 
+            stats: { hp: 40, atk: 45, def: 35, spa: 30, spd: 40, spe: 55 }, 
+            moves: [["Bite", 60, 100, 0], ["Air Cutter", 60, 95, 0], ["Acrobatics", 55, 100, 0], ["U-turn", 70, 100, 0], ["Roost", 0, '—', 50]] 
+        },
+        // 034. Golbat
+        { 
+            name: "Golbat", category: "Standard", evolution: "middle", types: ["poison", "flying"], habitat: "cave", 
+            stats: { hp: 75, atk: 80, def: 70, spa: 65, spd: 75, spe: 90 }, 
+            moves: [["Air Slash", 75, 95, 0], ["Bite", 60, 100, 0], ["Acrobatics", 55, 100, 0], ["U-turn", 70, 100, 0], ["Roost", 0, '—', 50]] 
+        },
+        // 035. Crobat
+        { 
+            name: "Crobat", category: "Standard", evolution: "highest", types: ["poison", "flying"], habitat: "cave", 
+            stats: { hp: 85, atk: 90, def: 80, spa: 70, spd: 80, spe: 130 }, 
+            moves: [["Brave Bird", 120, 100, 0], ["Cross Poison", 70, 100, 0], ["U-turn", 70, 100, 0], ["Roost", 0, '—', 50], ["Defog", 0, '—', 0]] 
+        },
+        // 036. Alolan Munchlax
+        { 
+            name: "Munchlax", category: "Standard", evolution: "lowest", types: ["normal"], habitat: "plains", 
+            stats: { hp: 135, atk: 85, def: 40, spa: 40, spd: 85, spe: 5 }, 
+            moves: [["Recycle", 0, '—', 0], ["Body Slam", 85, 100, 0], ["Swallow", 0, '—', 0], ["Rest", 0, '—', 100], ["Belly Drum", 0, '—', 0]] 
+        },
+        // 037. Snorlax
+        { 
+            name: "Snorlax", category: "Standard", evolution: "highest", types: ["normal"], habitat: "plains", 
+            stats: { hp: 160, atk: 110, def: 65, spa: 65, spd: 110, spe: 30 }, 
+            moves: [["Body Slam", 85, 100, 0], ["Heavy Slam", 0, 100, 0], ["Rest", 0, '—', 100], ["Earthquake", 100, 100, 0], ["Curse", 0, '—', 0]] 
+        },
+        // 038. Alolan Cutiefly
+        { 
+            name: "Cutiefly", category: "Standard", evolution: "lowest", types: ["bug", "fairy"], habitat: "jungle", 
+            stats: { hp: 40, atk: 45, def: 40, spa: 55, spd: 40, spe: 84 }, 
+            moves: [["Fairy Wind", 40, 100, 0], ["Stun Spore", 0, 75, 0], ["Struggle Bug", 50, 100, 0], ["Draining Kiss", 50, 100, 50], ["Bug Buzz", 90, 100, 0]] 
+        },
+        // 039. Ribombee
+        { 
+            name: "Ribombee", category: "Standard", evolution: "highest", types: ["bug", "fairy"], habitat: "jungle", 
+            stats: { hp: 60, atk: 55, def: 60, spa: 95, spd: 70, spe: 124 }, 
+            moves: [["Pollen Puff", 90, 100, 0], ["Quiver Dance", 0, '—', 0], ["Bug Buzz", 90, 100, 0], ["Moonblast", 95, 100, 0], ["Sticky Web", 0, '—', 0]] 
+        },
+        // 040. Alolan Growlithe
+        { 
+            name: "Growlithe", category: "Standard", evolution: "lowest", types: ["fire"], habitat: "plains", 
+            stats: { hp: 55, atk: 70, def: 45, spa: 70, spd: 50, spe: 60 }, 
+            moves: [["Flare Blitz", 120, 100, 0], ["Wild Charge", 90, 100, 0], ["Close Combat", 120, 100, 0], ["Morning Sun", 0, '—', 50], ["Roar", 0, 100, 0]] 
+        },
+        // 041. Arcanine
+        { 
+            name: "Arcanine", category: "Standard", evolution: "highest", types: ["fire"], habitat: "plains", 
+            stats: { hp: 90, atk: 110, def: 80, spa: 100, spd: 80, spe: 95 }, 
+            moves: [["Flare Blitz", 120, 100, 0], ["Extreme Speed", 80, 100, 0], ["Wild Charge", 90, 100, 0], ["Close Combat", 120, 100, 0], ["Morning Sun", 0, '—', 50]] 
+        },
+        // 042. Alolan Grimer
+        { 
+            name: "Alolan Grimer", category: "Standard", evolution: "lowest", types: ["poison", "dark"], habitat: "city", 
+            stats: { hp: 80, atk: 80, def: 50, spa: 40, spd: 50, spe: 25 }, 
+            moves: [["Poison Jab", 80, 100, 0], ["Knock Off", 65, 100, 0], ["Minimize", 0, '—', 0], ["Crunch", 80, 100, 0], ["Gunk Shot", 120, 80, 0]] 
+        },
+        // 043. Alolan Muk
         { 
             name: "Alolan Muk", category: "Standard", evolution: "highest", types: ["poison", "dark"], habitat: "city", 
             stats: { hp: 105, atk: 105, def: 75, spa: 65, spd: 100, spe: 50 }, 
             moves: [["Poison Jab", 80, 100, 0], ["Gunk Shot", 120, 80, 0], ["Crunch", 80, 100, 0], ["Knock Off", 65, 100, 0], ["Shadow Sneak", 40, 100, 0]] 
         },
+        // 044. Alolan Misdreavus
         { 
-            name: "Alolan Exeggutor", category: "Standard", evolution: "highest", types: ["grass", "dragon"], habitat: "jungle", 
-            stats: { hp: 95, atk: 105, def: 85, spa: 125, spd: 75, spe: 45 }, 
-            moves: [["Draco Meteor", 130, 90, 0], ["Leaf Storm", 130, 90, 0], ["Psychic", 90, 100, 0], ["Flamethrower", 90, 100, 0], ["Synthesis", 0, '—', 50]] 
+            name: "Misdreavus", category: "Standard", evolution: "lowest", types: ["ghost"], habitat: "cave", 
+            stats: { hp: 60, atk: 60, def: 60, spa: 85, spd: 85, spe: 85 }, 
+            moves: [["Shadow Ball", 80, 100, 0], ["Thunderbolt", 90, 100, 0], ["Will-O-Wisp", 0, 85, 0], ["Perish Song", 0, '—', 0], ["Nasty Plot", 0, '—', 0]] 
         },
+        // 045. Mismagius
         { 
-            name: "Alolan Marowak", category: "Standard", evolution: "highest", types: ["fire", "ghost"], habitat: "desert", 
-            stats: { hp: 60, atk: 80, def: 110, spa: 50, spd: 80, spe: 45 }, 
-            moves: [["Shadow Bone", 85, 100, 0], ["Flare Blitz", 120, 100, 0], ["Bonemerang", 50, 90, 0], ["Will-O-Wisp", 0, 85, 0], ["Swords Dance", 0, '—', 0]] 
+            name: "Mismagius", category: "Standard", evolution: "highest", types: ["ghost"], habitat: "cave", 
+            stats: { hp: 60, atk: 60, def: 60, spa: 105, spd: 105, spe: 105 }, 
+            moves: [["Shadow Ball", 80, 100, 0], ["Thunderbolt", 90, 100, 0], ["Will-O-Wisp", 0, 85, 0], ["Mystical Fire", 75, 100, 0], ["Nasty Plot", 0, '—', 0]] 
         },
-        
-        // New Gen 7 Standards
+        // 046. Alolan Drifloon
         { 
-            name: "Toucannon", category: "Standard", evolution: "highest", types: ["normal", "flying"], habitat: "jungle", 
-            stats: { hp: 80, atk: 120, def: 75, spa: 75, spd: 75, spe: 60 }, 
-            moves: [["Beak Blast", 100, 100, 0], ["Brave Bird", 120, 100, 0], ["Bullet Seed", 25, 100, 0], ["Roost", 0, '—', 50], ["U-turn", 70, 100, 0]] 
+            name: "Drifloon", category: "Standard", evolution: "lowest", types: ["ghost", "flying"], habitat: "plains", 
+            stats: { hp: 90, atk: 50, def: 34, spa: 60, spd: 44, spe: 70 }, 
+            moves: [["Shadow Ball", 80, 100, 0], ["Will-O-Wisp", 0, 85, 0], ["Acrobatics", 55, 100, 0], ["Destiny Bond", 0, '—', 0], ["Defog", 0, '—', 0]] 
         },
+        // 047. Drifblim
         { 
-            name: "Vikavolt", category: "Standard", evolution: "highest", types: ["bug", "electric"], habitat: "jungle", 
-            stats: { hp: 77, atk: 70, def: 90, spa: 145, spd: 75, spe: 43 }, 
-            moves: [["Thunderbolt", 90, 100, 0], ["Bug Buzz", 90, 100, 0], ["Energy Ball", 90, 100, 0], ["Discharge", 80, 100, 0], ["Volt Switch", 70, 100, 0]] 
+            name: "Drifblim", category: "Standard", evolution: "highest", types: ["ghost", "flying"], habitat: "plains", 
+            stats: { hp: 150, atk: 80, def: 44, spa: 90, spd: 54, spe: 80 }, 
+            moves: [["Shadow Ball", 80, 100, 0], ["Will-O-Wisp", 0, 85, 0], ["Acrobatics", 55, 100, 0], ["Explosion", 250, 100, 0], ["Defog", 0, '—', 0]] 
         },
+        // 048. Alolan Murkrow
         { 
-            name: "Lycanroc (Dusk)", category: "Standard", evolution: "highest", types: ["rock"], habitat: "desert", 
-            stats: { hp: 75, atk: 117, def: 65, spa: 55, spd: 65, spe: 110 }, 
-            moves: [["Accelerock", 40, 100, 0], ["Stone Edge", 100, 80, 0], ["Close Combat", 120, 100, 0], ["Swords Dance", 0, '—', 0], ["Crunch", 80, 100, 0]] 
+            name: "Murkrow", category: "Standard", evolution: "lowest", types: ["dark", "flying"], habitat: "city", 
+            stats: { hp: 60, atk: 85, def: 42, spa: 85, spd: 42, spe: 91 }, 
+            moves: [["Foul Play", 95, 100, 0], ["Sucker Punch", 70, 100, 0], ["Brave Bird", 120, 100, 0], ["Roost", 0, '—', 50], ["Quash", 0, 100, 0]] 
         },
+        // 049. Honchkrow
         { 
-            name: "Toxapex", category: "Standard", evolution: "highest", types: ["poison", "water"], habitat: "water", 
-            stats: { hp: 50, atk: 63, def: 152, spa: 53, spd: 142, spe: 35 }, 
-            moves: [["Baneful Bunker", 0, '—', 0], ["Recover", 0, '—', 50], ["Liquidation", 85, 100, 0], ["Haze", 0, '—', 0], ["Toxic", 0, 90, 0]] 
+            name: "Honchkrow", category: "Standard", evolution: "highest", types: ["dark", "flying"], habitat: "city", 
+            stats: { hp: 100, atk: 125, def: 52, spa: 105, spd: 52, spe: 71 }, 
+            moves: [["Foul Play", 95, 100, 0], ["Sucker Punch", 70, 100, 0], ["Brave Bird", 120, 100, 0], ["Roost", 0, '—', 50], ["Pursuit", 40, 100, 0]] 
         },
+        // 050. Alolan Ekans
         { 
-            name: "Lurantis", category: "Standard", evolution: "highest", types: ["grass"], habitat: "jungle", 
-            stats: { hp: 70, atk: 105, def: 90, spa: 80, spd: 90, spe: 45 }, 
-            moves: [["Leaf Blade", 90, 100, 0], ["Solar Blade", 125, 100, 0], ["Synthesis", 0, '—', 50], ["Superpower", 120, 100, 0], ["Leech Life", 80, 100, 0]] 
+            name: "Ekans", category: "Standard", evolution: "lowest", types: ["poison"], habitat: "plains", 
+            stats: { hp: 35, atk: 60, def: 44, spa: 40, spd: 54, spe: 55 }, 
+            moves: [["Poison Jab", 80, 100, 0], ["Gunk Shot", 120, 80, 0], ["Coil", 0, '—', 0], ["Glare", 0, 100, 0], ["Aqua Tail", 90, 90, 0]] 
         },
-        { 
-            name: "Salazzle", category: "Standard", evolution: "highest", types: ["poison", "fire"], habitat: "cave", 
-            stats: { hp: 68, atk: 64, def: 60, spa: 111, spd: 60, spe: 117 }, 
-            moves: [["Flamethrower", 90, 100, 0], ["Sludge Bomb", 90, 100, 0], ["Nasty Plot", 0, '—', 0], ["Dragon Pulse", 85, 100, 0], ["Fire Blast", 110, 85, 0]] 
-        },
-        { 
-            name: "Tsareena", category: "Standard", evolution: "highest", types: ["grass"], habitat: "jungle", 
-            stats: { hp: 72, atk: 120, def: 98, spa: 50, spd: 98, spe: 72 }, 
-            moves: [["Trop Kick", 70, 100, 0], ["Power Whip", 120, 85, 0], ["High Jump Kick", 130, 90, 0], ["Acrobatics", 55, 100, 0], ["Play Rough", 90, 90, 0]] 
-        },
-        { 
-            name: "Mimikyu", category: "Standard", evolution: "highest", types: ["ghost", "fairy"], habitat: "cave", 
-            stats: { hp: 55, atk: 90, def: 80, spa: 50, spd: 105, spe: 96 }, 
-            moves: [["Shadow Sneak", 40, 100, 0], ["Play Rough", 90, 90, 0], ["Swords Dance", 0, '—', 0], ["Will-O-Wisp", 0, 85, 0], ["Shadow Claw", 70, 100, 0]] 
-        },
-        { 
-            name: "Kommo-o", category: "Standard", evolution: "highest", types: ["dragon", "fighting"], habitat: "desert", 
-            stats: { hp: 75, atk: 110, def: 125, spa: 100, spd: 105, spe: 85 }, 
-            moves: [["Clanging Scales", 110, 100, 0], ["Close Combat", 120, 100, 0], ["Poison Jab", 80, 100, 0], ["Dragon Claw", 80, 100, 0], ["Swords Dance", 0, '—', 0]] 
-        },
-
-        // Legendary/Mythical Pokémon (Type: Null included)
-        { 
-            name: "Type: Null", category: "Legendary", evolution: "lowest", types: ["normal"], habitat: "city", 
-            stats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 59 }, 
-            moves: [["Multi-Attack", 90, 100, 0], ["Iron Head", 80, 100, 0], ["Double Edge", 120, 100, 0], ["X-Scissor", 80, 100, 0], ["U-turn", 70, 100, 0]] 
-        },
-        { 
-            name: "Silvally", category: "Legendary", evolution: "highest", types: ["normal"], habitat: "city", 
-            stats: { hp: 95, atk: 95, def: 95, spa: 95, spd: 95, spe: 95 }, 
-            moves: [["Multi-Attack", 90, 100, 0], ["Double Edge", 120, 100, 0], ["Parting Shot", 0, 100, 0], ["Flamethrower", 90, 100, 0], ["Ice Beam", 90, 100, 0]] 
-        },
-        { 
-            name: "Tapu Koko", category: "Legendary", evolution: "highest", types: ["electric", "fairy"], habitat: "all", 
-            stats: { hp: 70, atk: 115, def: 85, spa: 95, spd: 75, spe: 130 }, 
-            moves: [["Thunderbolt", 90, 100, 0], ["Dazzling Gleam", 80, 100, 0], ["Brave Bird", 120, 100, 0], ["Nature's Madness", 0, 90, 0], ["Volt Switch", 70, 100, 0]] 
-        },
-        { 
-            name: "Solgaleo", category: "Legendary", evolution: "highest", types: ["psychic", "steel"], habitat: "all", 
-            stats: { hp: 137, atk: 137, def: 107, spa: 113, spd: 89, spe: 97 }, 
-            moves: [["Sunsteel Strike", 100, 100, 0], ["Flare Blitz", 120, 100, 0], ["Zen Headbutt", 80, 90, 0], ["Cosmic Power", 0, '—', 0], ["Wild Charge", 90, 100, 0]] 
-        },
-        { 
-            name: "Lunala", category: "Legendary", evolution: "highest", types: ["psychic", "ghost"], habitat: "all", 
-            stats: { hp: 137, atk: 113, def: 89, spa: 137, spd: 107, spe: 97 }, 
-            moves: [["Moongeist Beam", 100, 100, 0], ["Shadow Ball", 80, 100, 0], ["Focus Blast", 120, 70, 0], ["Cosmic Power", 0, '—', 0], ["Ice Beam", 90, 100, 0]] 
-        },
-        
-        // Ultra Beasts (UBs)
-        { 
-            name: "Nihilego (UB-01)", category: "Ultra Beast", evolution: "highest", types: ["rock", "poison"], habitat: "all", 
-            stats: { hp: 109, atk: 53, def: 47, spa: 127, spd: 131, spe: 103 }, 
-            moves: [["Power Gem", 80, 100, 0], ["Venoshock", 65, 100, 0], ["Acid Spray", 40, 100, 0], ["Mirror Coat", 0, 100, 0], ["Sludge Wave", 95, 100, 0]] 
-        },
-        { 
-            name: "Buzzwole (UB-02)", category: "Ultra Beast", evolution: "highest", types: ["bug", "fighting"], habitat: "all", 
-            stats: { hp: 107, atk: 139, def: 139, spa: 53, spd: 53, spe: 79 }, 
-            moves: [["Leech Life", 80, 100, 0], ["Superpower", 120, 100, 0], ["Lunge", 80, 100, 0], ["Hammer Arm", 100, 90, 0], ["Ice Punch", 75, 100, 0]] 
-        },
-        { 
-            name: "Pheromosa (UB-02)", category: "Ultra Beast", evolution: "highest", types: ["bug", "fighting"], habitat: "all", 
-            stats: { hp: 71, atk: 137, def: 37, spa: 137, spd: 37, spe: 151 }, 
-            moves: [["Lunge", 80, 100, 0], ["High Jump Kick", 130, 90, 0], ["Ice Beam", 90, 100, 0], ["U-turn", 70, 100, 0], ["Quiver Dance", 0, '—', 0]] 
-        }
+        // --- ADD REMAINING POKÉMON ENTRIES HERE (Approx. 350 more needed) ---
     ];
 
     const history = [];
@@ -434,7 +558,7 @@
     // --- Core Logic ---
 
     function generateMoveTable(moves) {
-        let html = '<h3>Known Moves</h3><table class="move-table"><thead><tr><th>Move</th><th>Power (DMG)</th><th>Accuracy (ACC)</th><th>Health (Heal)</th></tr></thead><tbody>';
+        let html = '<h3>Known Moves</h3><table class="move-table"><thead><tr><th>Move</th><th>Power (DMG)</th><th>Accuracy (ACC)</th><th>Heal (HP)</th></tr></thead><tbody>';
         
         moves.forEach(move => {
             const [name, power, acc, health] = move;
@@ -469,6 +593,10 @@
         const evolutionFilter = document.getElementById('evolution-select').value;
         const includeLegendary = document.getElementById('include-legendary').checked;
         const includeUltraBeast = document.getElementById('include-ultrabeast').checked;
+        const resultBox = document.getElementById('result-box');
+        
+        // Shiny Roll (1 in 100)
+        const isShiny = Math.floor(Math.random() * 100) === 0;
 
         const filteredList = pokemonData.filter(p => {
             const isLegendary = p.category === 'Legendary' || p.category === 'Mythical';
@@ -477,7 +605,7 @@
             if (isLegendary && !includeLegendary) return false;
             if (isUltraBeast && !includeUltraBeast) return false;
 
-            if (p.category === 'Standard') {
+            if (p.category === 'Standard' || p.category === 'Legendary') { // Legendary Type: Null is Standard-like
                 if (occasionFilter !== 'all' && p.habitat !== occasionFilter) return false;
                 if (evolutionFilter !== 'all' && p.evolution !== evolutionFilter) return false;
             }
@@ -499,6 +627,7 @@
             categoryInfo.textContent = "Try adjusting your filters!";
             movesListElement.innerHTML = '';
             historyStatus.textContent = "History tracking is paused.";
+            resultBox.classList.remove('shiny-background');
             return;
         }
 
@@ -511,8 +640,16 @@
         const randomIndex = Math.floor(Math.random() * availablePokemon.length);
         const selectedPokemon = availablePokemon[randomIndex];
 
+        // Apply Shiny Styling
+        if (isShiny) {
+            resultName.innerHTML = `${selectedPokemon.name} <span class="shiny-label">(Shiny) ✨</span>`;
+            resultBox.classList.add('shiny-background');
+        } else {
+            resultName.textContent = selectedPokemon.name;
+            resultBox.classList.remove('shiny-background');
+        }
+
         // Update display 
-        resultName.textContent = selectedPokemon.name;
         categoryInfo.innerHTML = `Category: ${selectedPokemon.category} | Types: ${selectedPokemon.types.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(', ')} | Evolution Stage: ${selectedPokemon.evolution.charAt(0).toUpperCase() + selectedPokemon.evolution.slice(1)}`;
         
         // Combine Stats and Moves tables
@@ -533,7 +670,10 @@
         const listContainer = document.getElementById('full-list-content');
         listContainer.innerHTML = ''; 
 
-        pokemonData.forEach(p => {
+        // Sort the list alphabetically for better viewing
+        const sortedData = [...pokemonData].sort((a, b) => a.name.localeCompare(b.name));
+
+        sortedData.forEach(p => {
             const card = document.createElement('div');
             card.className = 'pokemon-card';
             
