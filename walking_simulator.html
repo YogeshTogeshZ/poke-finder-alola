@@ -296,6 +296,18 @@ fetch('pokemon_data.json')
                 { label: 'Special Def', value: pokemon.spd, icon: 'fa-shield-halved', color: 'text-green-600' },
                 { label: 'Speed', value: pokemon.spe, icon: 'fa-bolt', color: 'text-yellow-600' },
             ];
+function handleReroll() {
+  const pokemon = getRandomPokemonForBiome(currentBiome);
+  if (!pokemon) return;
+
+  encounterPokemon = {
+    name: pokemon.name,
+    hp: pokemon.stats.hp,
+    moves: pokemon.moves.map(m => m[0])
+  };
+
+  showEncounterModal(encounterPokemon);
+}
 
             function showEncounterModal(pokemon) {
   const modal = document.getElementById('encounter-modal');
@@ -328,22 +340,33 @@ fetch('pokemon_data.json')
         <ul class="list-none">${movesList}</ul>
       </div>
 
-      <button
-        onclick="handleContinue()"
-        class="w-full mt-6 py-4 px-4 bg-indigo-600 hover:bg-indigo-700 text-white text-xl font-bold rounded-xl shadow-lg transition duration-200 transform hover:scale-[1.02]"
-      >
-        Continue Journey
-      </button>
+      <div class="grid grid-cols-2 gap-4 mt-6">
+        <button
+          onclick="handleContinue()"
+          class="py-4 px-4 bg-indigo-600 hover:bg-indigo-700 text-white text-xl font-bold rounded-xl shadow-lg transition duration-200 transform hover:scale-[1.02]"
+        >
+          Continue Journey
+        </button>
+        <button
+          onclick="handleReroll()"
+          class="py-4 px-4 bg-yellow-500 hover:bg-yellow-600 text-white text-xl font-bold rounded-xl shadow-lg transition duration-200 transform hover:scale-[1.02]"
+        >
+          Reroll Encounter
+        </button>
+      </div>
     </div>
   `;
   modal.classList.remove('hidden');
 }
 
 
-        const hideEncounterModal = () => {
-            document.getElementById('encounter-modal').classList.add('hidden');
-            document.getElementById('encounter-modal').innerHTML = ''; // Clear content
-        }
+
+        function hideEncounterModal() {
+  const modal = document.getElementById('encounter-modal');
+  modal.classList.add('hidden');
+  modal.innerHTML = ''; // clear modal content
+}
+
 
         const updateSettingsPane = () => {
             const pane = document.getElementById('settings-pane');
