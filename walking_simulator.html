@@ -185,7 +185,7 @@ fetch('pokemon_data.json')
         const getRandomTime = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
         
         const calculateNextBiomeTime = () => getRandomTime(100, 500) * 1000; // 100-500 seconds
-        const calculateNextEncounterTime = () => getRandomTime(15, 100) * 1000; // 15-100 seconds
+        const calculateNextEncounterTime = () => getRandomTime(15, 30) * 1000; // 5-15 seconds
         const calculateNextPokecenterTime = () => getRandomTime(300, 900) * 1000; // 300-900 seconds
         
         // Mock function to simulate fetching detailed Pokémon stats
@@ -456,7 +456,17 @@ fetch('pokemon_data.json')
             
             status = 'running';
             updateStatusDisplay();
+            function handleEncounter() {
+  clearAllTimers();
+  status = 'encounter';
+  updateStatusDisplay();
 
+  const pokemon = getRandomPokemonForBiome(currentBiome); // your new type-based logic
+  if (!pokemon) {
+    console.warn(`No Pokémon found for biome: ${currentBiome.name}`);
+    startTimers();
+    return;
+  }
             // Set the Biome Change Timer
             biomeTimer = setTimeout(handleBiomeChange, calculateNextBiomeTime());
 
