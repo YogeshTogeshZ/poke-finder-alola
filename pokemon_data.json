@@ -576,6 +576,51 @@
         "moves": [["Clanging Scales", 110, 100, 0], ["Close Combat", 120, 100, 0], ["Poison Jab", 80, 100, 0], ["Dragon Claw", 80, 100, 0], ["Swords Dance", 0, "—", 0]] 
     },
     { 
+        "name": "Alolan Rattata", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["dark", "normal"], 
+        "habitat": "city", 
+        "stats": { "hp": 30, "atk": 56, "def": 35, "spa": 25, "spd": 35, "spe": 72 }, 
+        "moves": [["Bite", 60, 100, 0], ["Sucker Punch", 70, 100, 0], ["Crunch", 80, 100, 0], ["Reversal", 0, 100, 0], ["U-turn", 70, 100, 0]] 
+    },
+    { 
+        "name": "Alolan Raticate", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["dark", "normal"], 
+        "habitat": "city", 
+        "stats": { "hp": 75, "atk": 71, "def": 70, "spa": 40, "spd": 80, "spe": 77 }, 
+        "moves": [["Crunch", 80, 100, 0], ["Sucker Punch", 70, 100, 0], ["Pursuit", 40, 100, 0], ["Knock Off", 65, 100, 0], ["Super Fang", 0, 90, 0]] 
+    },
+    { 
+        "name": "Alolan Raichu", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["electric", "psychic"], 
+        "habitat": "water", 
+        "stats": { "hp": 60, "atk": 85, "def": 50, "spa": 95, "spd": 85, "spe": 110 }, 
+        "moves": [["Thunderbolt", 90, 100, 0], ["Psychic", 90, 100, 0], ["Volt Switch", 70, 100, 0], ["Focus Blast", 120, 70, 0], ["Nasty Plot", 0, "—", 0]] 
+    },
+    { 
+        "name": "Alolan Sandshrew", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["ice", "steel"], 
+        "habitat": "desert", 
+        "stats": { "hp": 50, "atk": 75, "def": 90, "spa": 10, "spd": 35, "spe": 40 }, 
+        "moves": [["Icicle Crash", 85, 90, 0], ["Iron Head", 80, 100, 0], ["Gyro Ball", 0, 100, 0], ["Ice Shard", 40, 100, 0], ["Earthquake", 100, 100, 0]] 
+    },
+    { 
+        "name": "Alolan Sandslash", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["ice", "steel"], 
+        "habitat": "desert", 
+        "stats": { "hp": 75, "atk": 100, "def": 120, "spa": 25, "spd": 65, "spe": 65 }, 
+        "moves": [["Icicle Crash", 85, 90, 0], ["Iron Head", 80, 100, 0], ["Earthquake", 100, 100, 0], ["Swords Dance", 0, "—", 0], ["Ice Shard", 40, 100, 0]] 
+    },
+    { 
         "name": "Alolan Vulpix", 
         "category": "Standard", 
         "evolution": "lowest", 
@@ -693,229 +738,1173 @@
         "moves": [["Shadow Bone", 85, 100, 0], ["Flare Blitz", 120, 100, 0], ["Bonemerang", 50, 90, 0], ["Will-O-Wisp", 0, 85, 0], ["Swords Dance", 0, "—", 0]] 
     },
     { 
-        "name": "Cosmog", 
-        "category": "Legendary", 
+        "name": "Pichu", 
+        "category": "Standard", 
         "evolution": "lowest", 
-        "types": ["psychic"], 
-        "habitat": "all", 
-        "stats": { "hp": 43, "atk": 29, "def": 31, "spa": 29, "spd": 31, "spe": 37 }, 
-        "moves": [["Splash", 0, "—", 0], ["Teleport", 0, "—", 0], ["Tackle", 40, 100, 0], ["Cosmic Power", 0, "—", 0], ["Light Screen", 0, "—", 0]] 
+        "types": ["electric"], 
+        "habitat": "plains", 
+        "stats": { "hp": 20, "atk": 40, "def": 15, "spa": 35, "spd": 35, "spe": 60 }, 
+        "moves": [["Thunder Shock", 40, 100, 0], ["Sweet Kiss", 0, 75, 0], ["Charm", 0, 100, 0], ["Disarming Voice", 40, "—", 0], ["Volt Tackle", 120, 100, 0]] 
     },
     { 
-        "name": "Cosmoem", 
-        "category": "Legendary", 
+        "name": "Pikachu", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["electric"], 
+        "habitat": "plains", 
+        "stats": { "hp": 35, "atk": 55, "def": 40, "spa": 50, "spd": 50, "spe": 90 }, 
+        "moves": [["Thunderbolt", 90, 100, 0], ["Electro Ball", 0, 100, 0], ["Quick Attack", 40, 100, 0], ["Iron Tail", 100, 75, 0], ["Volt Tackle", 120, 100, 0]] 
+    },
+    { 
+        "name": "Zubat", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["poison", "flying"], 
+        "habitat": "cave", 
+        "stats": { "hp": 40, "atk": 45, "def": 35, "spa": 30, "spd": 40, "spe": 55 }, 
+        "moves": [["Bite", 60, 100, 0], ["Air Cutter", 60, 95, 0], ["U-turn", 70, 100, 0], ["Cross Poison", 70, 100, 0], ["Roost", 0, "—", 50]] 
+    },
+    { 
+        "name": "Golbat", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["poison", "flying"], 
+        "habitat": "cave", 
+        "stats": { "hp": 75, "atk": 80, "def": 70, "spa": 65, "spd": 75, "spe": 90 }, 
+        "moves": [["Air Slash", 75, 95, 0], ["Brave Bird", 120, 100, 0], ["U-turn", 70, 100, 0], ["Cross Poison", 70, 100, 0], ["Roost", 0, "—", 50]] 
+    },
+    { 
+        "name": "Crobat", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["poison", "flying"], 
+        "habitat": "cave", 
+        "stats": { "hp": 85, "atk": 90, "def": 80, "spa": 70, "spd": 80, "spe": 130 }, 
+        "moves": [["Brave Bird", 120, 100, 0], ["U-turn", 70, 100, 0], ["Cross Poison", 70, 100, 0], ["Defog", 0, "—", 0], ["Roost", 0, "—", 50]] 
+    },
+    { 
+        "name": "Wingull", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["water", "flying"], 
+        "habitat": "water", 
+        "stats": { "hp": 40, "atk": 30, "def": 30, "spa": 55, "spd": 30, "spe": 85 }, 
+        "moves": [["Water Gun", 40, 100, 0], ["Air Cutter", 60, 95, 0], ["Surf", 90, 100, 0], ["Ice Beam", 90, 100, 0], ["U-turn", 70, 100, 0]] 
+    },
+    { 
+        "name": "Pelipper", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["water", "flying"], 
+        "habitat": "water", 
+        "stats": { "hp": 60, "atk": 50, "def": 100, "spa": 95, "spd": 70, "spe": 65 }, 
+        "moves": [["Scald", 80, 100, 0], ["Hurricane", 110, 70, 0], ["U-turn", 70, 100, 0], ["Roost", 0, "—", 50], ["Defog", 0, "—", 0]] 
+    },
+    { 
+        "name": "Abra", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["psychic"], 
+        "habitat": "city", 
+        "stats": { "hp": 25, "atk": 20, "def": 15, "spa": 105, "spd": 55, "spe": 90 }, 
+        "moves": [["Psychic", 90, 100, 0], ["Shadow Ball", 80, 100, 0], ["Energy Ball", 90, 100, 0], ["Dazzling Gleam", 80, 100, 0], ["Calm Mind", 0, "—", 0]] 
+    },
+    { 
+        "name": "Kadabra", 
+        "category": "Standard", 
         "evolution": "middle", 
         "types": ["psychic"], 
-        "habitat": "all", 
-        "stats": { "hp": 43, "atk": 29, "def": 131, "spa": 29, "spd": 131, "spe": 37 }, 
-        "moves": [["Cosmic Power", 0, "—", 0], ["Teleport", 0, "—", 0], ["Iron Defense", 0, "—", 0], ["Rest", 0, "—", 100], ["Protect", 0, "—", 0]] 
+        "habitat": "city", 
+        "stats": { "hp": 40, "atk": 35, "def": 30, "spa": 120, "spd": 70, "spe": 105 }, 
+        "moves": [["Psychic", 90, 100, 0], ["Shadow Ball", 80, 100, 0], ["Energy Ball", 90, 100, 0], ["Dazzling Gleam", 80, 100, 0], ["Calm Mind", 0, "—", 0]] 
     },
     { 
-        "name": "Solgaleo", 
-        "category": "Legendary", 
-        "evolution": "highest", 
-        "types": ["psychic", "steel"], 
-        "habitat": "all", 
-        "stats": { "hp": 137, "atk": 137, "def": 107, "spa": 113, "spd": 89, "spe": 97 }, 
-        "moves": [["Sunsteel Strike", 100, 100, 0], ["Flare Blitz", 120, 100, 0], ["Zen Headbutt", 80, 90, 0], ["Morning Sun", 0, "—", 50], ["Cosmic Power", 0, "—", 0]] 
-    },
-    { 
-        "name": "Lunala", 
-        "category": "Legendary", 
-        "evolution": "highest", 
-        "types": ["psychic", "ghost"], 
-        "habitat": "all", 
-        "stats": { "hp": 137, "atk": 113, "def": 89, "spa": 137, "spd": 107, "spe": 97 }, 
-        "moves": [["Moongeist Beam", 100, 100, 0], ["Shadow Ball", 80, 100, 0], ["Focus Blast", 120, 70, 0], ["Ice Beam", 90, 100, 0], ["Cosmic Power", 0, "—", 0]] 
-    },
-    { 
-        "name": "Necrozma (Base)", 
-        "category": "Legendary", 
+        "name": "Alakazam", 
+        "category": "Standard", 
         "evolution": "highest", 
         "types": ["psychic"], 
-        "habitat": "all", 
-        "stats": { "hp": 97, "atk": 107, "def": 101, "spa": 127, "spd": 89, "spe": 79 }, 
-        "moves": [["Prismatic Laser", 160, 100, 0], ["Photon Geyser", 100, 100, 0], ["Earth Power", 90, 100, 0], ["Heat Wave", 95, 90, 0], ["Calm Mind", 0, "—", 0]] 
+        "habitat": "city", 
+        "stats": { "hp": 55, "atk": 50, "def": 45, "spa": 135, "spd": 95, "spe": 120 }, 
+        "moves": [["Psychic", 90, 100, 0], ["Shadow Ball", 80, 100, 0], ["Focus Blast", 120, 70, 0], ["Dazzling Gleam", 80, 100, 0], ["Calm Mind", 0, "—", 0]] 
     },
     { 
-        "name": "Necrozma (Dusk Mane)", 
-        "category": "Legendary", 
+        "name": "Machop", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["fighting"], 
+        "habitat": "plains", 
+        "stats": { "hp": 70, "atk": 80, "def": 50, "spa": 35, "spd": 35, "spe": 35 }, 
+        "moves": [["Karate Chop", 50, 100, 0], ["Brick Break", 75, 100, 0], ["Ice Punch", 75, 100, 0], ["Rock Slide", 75, 90, 0], ["Bullet Punch", 40, 100, 0]] 
+    },
+    { 
+        "name": "Machoke", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["fighting"], 
+        "habitat": "plains", 
+        "stats": { "hp": 80, "atk": 100, "def": 70, "spa": 50, "spd": 60, "spe": 45 }, 
+        "moves": [["Dynamic Punch", 100, 50, 0], ["Knock Off", 65, 100, 0], ["Ice Punch", 75, 100, 0], ["Rock Slide", 75, 90, 0], ["Bullet Punch", 40, 100, 0]] 
+    },
+    { 
+        "name": "Machamp", 
+        "category": "Standard", 
         "evolution": "highest", 
-        "types": ["psychic", "steel"], 
-        "habitat": "all", 
-        "stats": { "hp": 97, "atk": 157, "def": 127, "spa": 113, "spd": 109, "spe": 77 }, 
-        "moves": [["Sunsteel Strike", 100, 100, 0], ["Photon Geyser", 100, 100, 0], ["Zen Headbutt", 80, 90, 0], ["Earthquake", 100, 100, 0], ["Swords Dance", 0, "—", 0]] 
+        "types": ["fighting"], 
+        "habitat": "plains", 
+        "stats": { "hp": 90, "atk": 130, "def": 80, "spa": 65, "spd": 85, "spe": 55 }, 
+        "moves": [["Dynamic Punch", 100, 50, 0], ["Close Combat", 120, 100, 0], ["Ice Punch", 75, 100, 0], ["Stone Edge", 100, 80, 0], ["Bullet Punch", 40, 100, 0]] 
     },
     { 
-        "name": "Necrozma (Dawn Wings)", 
-        "category": "Legendary", 
+        "name": "Tentacool", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["water", "poison"], 
+        "habitat": "water", 
+        "stats": { "hp": 40, "atk": 40, "def": 35, "spa": 50, "spd": 100, "spe": 70 }, 
+        "moves": [["Scald", 80, 100, 0], ["Poison Jab", 80, 100, 0], ["Rapid Spin", 50, 100, 0], ["Sludge Bomb", 90, 100, 0], ["Ice Beam", 90, 100, 0]] 
+    },
+    { 
+        "name": "Tentacruel", 
+        "category": "Standard", 
         "evolution": "highest", 
-        "types": ["psychic", "ghost"], 
-        "habitat": "all", 
-        "stats": { "hp": 97, "atk": 113, "def": 109, "spa": 157, "spd": 127, "spe": 77 }, 
-        "moves": [["Moongeist Beam", 100, 100, 0], ["Photon Geyser", 100, 100, 0], ["Shadow Ball", 80, 100, 0], ["Focus Blast", 120, 70, 0], ["Calm Mind", 0, "—", 0]] 
+        "types": ["water", "poison"], 
+        "habitat": "water", 
+        "stats": { "hp": 80, "atk": 70, "def": 65, "spa": 80, "spd": 120, "spe": 100 }, 
+        "moves": [["Scald", 80, 100, 0], ["Sludge Bomb", 90, 100, 0], ["Rapid Spin", 50, 100, 0], ["Ice Beam", 90, 100, 0], ["Knock Off", 65, 100, 0]] 
     },
     { 
-        "name": "Tapu Koko", 
-        "category": "Legendary", 
+        "name": "Geodude", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["rock", "ground"], 
+        "habitat": "cave", 
+        "stats": { "hp": 40, "atk": 80, "def": 100, "spa": 30, "spd": 30, "spe": 20 }, 
+        "moves": [["Rock Slide", 75, 90, 0], ["Earthquake", 100, 100, 0], ["Sucker Punch", 70, 100, 0], ["Stone Edge", 100, 80, 0], ["Stealth Rock", 0, "—", 0]] 
+    },
+    { 
+        "name": "Graveler", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["rock", "ground"], 
+        "habitat": "cave", 
+        "stats": { "hp": 55, "atk": 95, "def": 115, "spa": 45, "spd": 45, "spe": 35 }, 
+        "moves": [["Rock Slide", 75, 90, 0], ["Earthquake", 100, 100, 0], ["Stone Edge", 100, 80, 0], ["Explosion", 250, 100, 0], ["Sucker Punch", 70, 100, 0]] 
+    },
+    { 
+        "name": "Golem", 
+        "category": "Standard", 
         "evolution": "highest", 
-        "types": ["electric", "fairy"], 
-        "habitat": "all", 
-        "stats": { "hp": 70, "atk": 115, "def": 85, "spa": 95, "spd": 75, "spe": 130 }, 
-        "moves": [["Thunderbolt", 90, 100, 0], ["Dazzling Gleam", 80, 100, 0], ["Brave Bird", 120, 100, 0], ["Nature's Madness", 0, 90, 0], ["Volt Switch", 70, 100, 0]] 
+        "types": ["rock", "ground"], 
+        "habitat": "cave", 
+        "stats": { "hp": 80, "atk": 120, "def": 130, "spa": 55, "spd": 65, "spe": 45 }, 
+        "moves": [["Stone Edge", 100, 80, 0], ["Earthquake", 100, 100, 0], ["Rock Slide", 75, 90, 0], ["Sucker Punch", 70, 100, 0], ["Heavy Slam", 0, 100, 0]] 
     },
     { 
-        "name": "Tapu Lele", 
-        "category": "Legendary", 
+        "name": "Magnemite", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["electric", "steel"], 
+        "habitat": "city", 
+        "stats": { "hp": 25, "atk": 35, "def": 70, "spa": 95, "spd": 55, "spe": 45 }, 
+        "moves": [["Thunderbolt", 90, 100, 0], ["Flash Cannon", 80, 100, 0], ["Volt Switch", 70, 100, 0], ["Hidden Power (Fire)", 60, 100, 0], ["Thunder Wave", 0, 90, 0]] 
+    },
+    { 
+        "name": "Magneton", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["electric", "steel"], 
+        "habitat": "city", 
+        "stats": { "hp": 50, "atk": 60, "def": 95, "spa": 120, "spd": 70, "spe": 70 }, 
+        "moves": [["Thunderbolt", 90, 100, 0], ["Flash Cannon", 80, 100, 0], ["Volt Switch", 70, 100, 0], ["Hidden Power (Fire)", 60, 100, 0], ["Tri Attack", 80, 100, 0]] 
+    },
+    { 
+        "name": "Magnezone", 
+        "category": "Standard", 
         "evolution": "highest", 
-        "types": ["psychic", "fairy"], 
-        "habitat": "all", 
-        "stats": { "hp": 70, "atk": 85, "def": 75, "spa": 130, "spd": 115, "spe": 95 }, 
-        "moves": [["Psychic", 90, 100, 0], ["Moonblast", 95, 100, 0], ["Focus Blast", 120, 70, 0], ["Nature's Madness", 0, 90, 0], ["Calm Mind", 0, "—", 0]] 
+        "types": ["electric", "steel"], 
+        "habitat": "city", 
+        "stats": { "hp": 70, "atk": 70, "def": 115, "spa": 130, "spd": 90, "spe": 60 }, 
+        "moves": [["Thunderbolt", 90, 100, 0], ["Flash Cannon", 80, 100, 0], ["Volt Switch", 70, 100, 0], ["Hidden Power (Fire)", 60, 100, 0], ["Body Press", 80, 100, 0]] 
     },
     { 
-        "name": "Tapu Bulu", 
-        "category": "Legendary", 
-        "evolution": "highest", 
-        "types": ["grass", "fairy"], 
-        "habitat": "all", 
-        "stats": { "hp": 70, "atk": 130, "def": 115, "spa": 85, "spd": 95, "spe": 75 }, 
-        "moves": [["Horn Leech", 75, 100, 0], ["Wood Hammer", 120, 100, 0], ["Close Combat", 120, 100, 0], ["Nature's Madness", 0, 90, 0], ["Swords Dance", 0, "—", 0]] 
-    },
-    { 
-        "name": "Tapu Fini", 
-        "category": "Legendary", 
-        "evolution": "highest", 
-        "types": ["water", "fairy"], 
-        "habitat": "all", 
-        "stats": { "hp": 70, "atk": 75, "def": 115, "spa": 95, "spd": 130, "spe": 85 }, 
-        "moves": [["Moonblast", 95, 100, 0], ["Hydro Pump", 110, 80, 0], ["Nature's Madness", 0, 90, 0], ["Defog", 0, "—", 0], ["Taunt", 0, 100, 0]] 
-    },
-    { 
-        "name": "Nihilego (UB-01)", 
-        "category": "Ultra Beast", 
-        "evolution": "highest", 
-        "types": ["rock", "poison"], 
-        "habitat": "all", 
-        "stats": { "hp": 109, "atk": 53, "def": 47, "spa": 127, "spd": 131, "spe": 103 }, 
-        "moves": [["Power Gem", 80, 100, 0], ["Sludge Wave", 95, 100, 0], ["Acid Spray", 40, 100, 0], ["Thunderbolt", 90, 100, 0], ["Mirror Coat", 0, 100, 0]] 
-    },
-    { 
-        "name": "Buzzwole (UB-02)", 
-        "category": "Ultra Beast", 
-        "evolution": "highest", 
-        "types": ["bug", "fighting"], 
-        "habitat": "all", 
-        "stats": { "hp": 107, "atk": 139, "def": 139, "spa": 53, "spd": 53, "spe": 79 }, 
-        "moves": [["Leech Life", 80, 100, 0], ["Superpower", 120, 100, 0], ["Lunge", 80, 100, 0], ["Ice Punch", 75, 100, 0], ["Swords Dance", 0, "—", 0]] 
-    },
-    { 
-        "name": "Pheromosa (UB-02)", 
-        "category": "Ultra Beast", 
-        "evolution": "highest", 
-        "types": ["bug", "fighting"], 
-        "habitat": "all", 
-        "stats": { "hp": 71, "atk": 137, "def": 37, "spa": 137, "spd": 37, "spe": 151 }, 
-        "moves": [["Lunge", 80, 100, 0], ["High Jump Kick", 130, 90, 0], ["Ice Beam", 90, 100, 0], ["U-turn", 70, 100, 0], ["Quiver Dance", 0, "—", 0]] 
-    },
-    { 
-        "name": "Xurkitree (UB-03)", 
-        "category": "Ultra Beast", 
-        "evolution": "highest", 
-        "types": ["electric"], 
-        "habitat": "all", 
-        "stats": { "hp": 83, "atk": 89, "def": 71, "spa": 173, "spd": 71, "spe": 83 }, 
-        "moves": [["Thunderbolt", 90, 100, 0], ["Energy Ball", 90, 100, 0], ["Volt Switch", 70, 100, 0], ["Dazzling Gleam", 80, 100, 0], ["Tail Glow", 0, "—", 0]] 
-    },
-    { 
-        "name": "Celesteela (UB-04)", 
-        "category": "Ultra Beast", 
-        "evolution": "highest", 
-        "types": ["steel", "flying"], 
-        "habitat": "all", 
-        "stats": { "hp": 97, "atk": 101, "def": 103, "spa": 107, "spd": 101, "spe": 61 }, 
-        "moves": [["Heavy Slam", 0, 100, 0], ["Leech Seed", 0, 90, 0], ["Flamethrower", 90, 100, 0], ["Toxic", 0, 90, 0], ["Air Slash", 75, 95, 0]] 
-    },
-    { 
-        "name": "Kartana (UB-04)", 
-        "category": "Ultra Beast", 
-        "evolution": "highest", 
-        "types": ["grass", "steel"], 
-        "habitat": "all", 
-        "stats": { "hp": 59, "atk": 181, "def": 131, "spa": 59, "spd": 31, "spe": 109 }, 
-        "moves": [["Leaf Blade", 90, 100, 0], ["Smart Strike", 70, "—", 0], ["Sacred Sword", 90, 100, 0], ["Swords Dance", 0, "—", 0], ["Night Slash", 70, 100, 0]] 
-    },
-    { 
-        "name": "Guzzlord (UB-05)", 
-        "category": "Ultra Beast", 
-        "evolution": "highest", 
-        "types": ["dark", "dragon"], 
-        "habitat": "all", 
-        "stats": { "hp": 223, "atk": 101, "def": 53, "spa": 97, "spd": 53, "spe": 43 }, 
-        "moves": [["Dark Pulse", 80, 100, 0], ["Draco Meteor", 130, 90, 0], ["Heavy Slam", 0, 100, 0], ["Knock Off", 65, 100, 0], ["Toxic", 0, 90, 0]] 
-    },
-    { 
-        "name": "Poipole", 
-        "category": "Ultra Beast", 
+        "name": "Grimer", 
+        "category": "Standard", 
         "evolution": "lowest", 
         "types": ["poison"], 
-        "habitat": "all", 
-        "stats": { "hp": 67, "atk": 73, "def": 67, "spa": 73, "spd": 67, "spe": 73 }, 
-        "moves": [["Nasty Plot", 0, "—", 0], ["Sludge Bomb", 90, 100, 0], ["Dragon Pulse", 85, 100, 0], ["U-turn", 70, 100, 0], ["Toxic", 0, 90, 0]] 
+        "habitat": "city", 
+        "stats": { "hp": 80, "atk": 80, "def": 50, "spa": 40, "spd": 50, "spe": 25 }, 
+        "moves": [["Gunk Shot", 120, 80, 0], ["Poison Jab", 80, 100, 0], ["Shadow Sneak", 40, 100, 0], ["Minimize", 0, "—", 0], ["Thunder Punch", 75, 100, 0]] 
     },
     { 
-        "name": "Naganadel", 
-        "category": "Ultra Beast", 
+        "name": "Muk", 
+        "category": "Standard", 
         "evolution": "highest", 
-        "types": ["poison", "dragon"], 
-        "habitat": "all", 
-        "stats": { "hp": 73, "atk": 73, "def": 73, "spa": 127, "spd": 73, "spe": 121 }, 
-        "moves": [["Sludge Wave", 95, 100, 0], ["Draco Meteor", 130, 90, 0], ["Fire Blast", 110, 85, 0], ["U-turn", 70, 100, 0], ["Nasty Plot", 0, "—", 0]] 
+        "types": ["poison"], 
+        "habitat": "city", 
+        "stats": { "hp": 105, "atk": 105, "def": 75, "spa": 65, "spd": 100, "spe": 50 }, 
+        "moves": [["Gunk Shot", 120, 80, 0], ["Poison Jab", 80, 100, 0], ["Shadow Sneak", 40, 100, 0], ["Thunder Punch", 75, 100, 0], ["Brick Break", 75, 100, 0]] 
     },
     { 
-        "name": "Stakataka (UB-08)", 
-        "category": "Ultra Beast", 
+        "name": "Gastly", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["ghost", "poison"], 
+        "habitat": "cave", 
+        "stats": { "hp": 30, "atk": 35, "def": 30, "spa": 100, "spd": 35, "spe": 80 }, 
+        "moves": [["Shadow Ball", 80, 100, 0], ["Sludge Bomb", 90, 100, 0], ["Dazzling Gleam", 80, 100, 0], ["Will-O-Wisp", 0, 85, 0], ["Hypnosis", 0, 60, 0]] 
+    },
+    { 
+        "name": "Haunter", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["ghost", "poison"], 
+        "habitat": "cave", 
+        "stats": { "hp": 45, "atk": 50, "def": 45, "spa": 115, "spd": 55, "spe": 95 }, 
+        "moves": [["Shadow Ball", 80, 100, 0], ["Sludge Bomb", 90, 100, 0], ["Focus Blast", 120, 70, 0], ["Will-O-Wisp", 0, 85, 0], ["Dazzling Gleam", 80, 100, 0]] 
+    },
+    { 
+        "name": "Gengar", 
+        "category": "Standard", 
         "evolution": "highest", 
-        "types": ["rock", "steel"], 
-        "habitat": "all", 
-        "stats": { "hp": 61, "atk": 131, "def": 211, "spa": 53, "spd": 101, "spe": 13 }, 
-        "moves": [["Gyro Ball", 0, 100, 0], ["Stone Edge", 100, 80, 0], ["Earthquake", 100, 100, 0], ["Rock Slide", 75, 90, 0], ["Trick Room", 0, "—", 0]] 
+        "types": ["ghost", "poison"], 
+        "habitat": "cave", 
+        "stats": { "hp": 60, "atk": 65, "def": 60, "spa": 130, "spd": 75, "spe": 110 }, 
+        "moves": [["Shadow Ball", 80, 100, 0], ["Sludge Bomb", 90, 100, 0], ["Focus Blast", 120, 70, 0], ["Dazzling Gleam", 80, 100, 0], ["Will-O-Wisp", 0, 85, 0]] 
     },
     { 
-        "name": "Blacephalon (UB-08)", 
-        "category": "Ultra Beast", 
+        "name": "Cubone", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["ground"], 
+        "habitat": "desert", 
+        "stats": { "hp": 50, "atk": 50, "def": 95, "spa": 40, "spd": 50, "spe": 35 }, 
+        "moves": [["Bonemerang", 50, 90, 0], ["Earthquake", 100, 100, 0], ["Rock Slide", 75, 90, 0], ["Fire Punch", 75, 100, 0], ["Swords Dance", 0, "—", 0]] 
+    },
+    { 
+        "name": "Marowak", 
+        "category": "Standard", 
         "evolution": "highest", 
-        "types": ["fire", "ghost"], 
-        "habitat": "all", 
-        "stats": { "hp": 53, "atk": 127, "def": 53, "spa": 151, "spd": 79, "spe": 107 }, 
-        "moves": [["Mind Blown", 150, 100, 0], ["Shadow Ball", 80, 100, 0], ["Flamethrower", 90, 100, 0], ["Substitute", 0, "—", 0], ["Trick", 0, 100, 0]] 
+        "types": ["ground"], 
+        "habitat": "desert", 
+        "stats": { "hp": 60, "atk": 80, "def": 110, "spa": 50, "spd": 80, "spe": 45 }, 
+        "moves": [["Bonemerang", 50, 90, 0], ["Earthquake", 100, 100, 0], ["Stone Edge", 100, 80, 0], ["Fire Punch", 75, 100, 0], ["Swords Dance", 0, "—", 0]] 
     },
     { 
-        "name": "Magearna", 
-        "category": "Mythical", 
+        "name": "Lickitung", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["normal"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 90, "atk": 55, "def": 75, "spa": 60, "spd": 75, "spe": 30 }, 
+        "moves": [["Body Slam", 85, 100, 0], ["Earthquake", 100, 100, 0], ["Swords Dance", 0, "—", 0], ["Power Whip", 120, 85, 0], ["Knock Off", 65, 100, 0]] 
+    },
+    { 
+        "name": "Lickilicky", 
+        "category": "Standard", 
         "evolution": "highest", 
-        "types": ["steel", "fairy"], 
-        "habitat": "all", 
-        "stats": { "hp": 80, "atk": 95, "def": 115, "spa": 130, "spd": 115, "spe": 65 }, 
-        "moves": [["Fleur Cannon", 130, 90, 0], ["Flash Cannon", 80, 100, 0], ["Aura Sphere", 80, "—", 0], ["Volt Switch", 70, 100, 0], ["Shift Gear", 0, "—", 0]] 
+        "types": ["normal"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 110, "atk": 85, "def": 95, "spa": 80, "spd": 95, "spe": 50 }, 
+        "moves": [["Body Slam", 85, 100, 0], ["Earthquake", 100, 100, 0], ["Knock Off", 65, 100, 0], ["Power Whip", 120, 85, 0], ["Wish", 0, "—", 50]] 
     },
     { 
-        "name": "Zeraora", 
-        "category": "Mythical", 
+        "name": "Chansey", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["normal"], 
+        "habitat": "plains", 
+        "stats": { "hp": 250, "atk": 5, "def": 5, "spa": 35, "spd": 105, "spe": 50 }, 
+        "moves": [["Seismic Toss", 0, 100, 0], ["Soft-Boiled", 0, "—", 50], ["Toxic", 0, 90, 0], ["Stealth Rock", 0, "—", 0], ["Wish", 0, "—", 50]] 
+    },
+    { 
+        "name": "Blissey", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["normal"], 
+        "habitat": "plains", 
+        "stats": { "hp": 255, "atk": 10, "def": 10, "spa": 75, "spd": 135, "spe": 55 }, 
+        "moves": [["Seismic Toss", 0, 100, 0], ["Soft-Boiled", 0, "—", 50], ["Toxic", 0, 90, 0], ["Calm Mind", 0, "—", 0], ["Wish", 0, "—", 50]] 
+    },
+    { 
+        "name": "Goldeen", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 45, "atk": 67, "def": 60, "spa": 35, "spd": 50, "spe": 63 }, 
+        "moves": [["Aqua Jet", 40, 100, 0], ["Waterfall", 80, 100, 0], ["Megahorn", 120, 85, 0], ["Ice Beam", 90, 100, 0], ["Knock Off", 65, 100, 0]] 
+    },
+    { 
+        "name": "Seaking", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 80, "atk": 92, "def": 65, "spa": 65, "spd": 80, "spe": 68 }, 
+        "moves": [["Waterfall", 80, 100, 0], ["Megahorn", 120, 85, 0], ["Ice Beam", 90, 100, 0], ["Drill Run", 80, 95, 0], ["Knock Off", 65, 100, 0]] 
+    },
+    { 
+        "name": "Staryu", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 30, "atk": 45, "def": 55, "spa": 70, "spd": 55, "spe": 85 }, 
+        "moves": [["Scald", 80, 100, 0], ["Ice Beam", 90, 100, 0], ["Thunderbolt", 90, 100, 0], ["Rapid Spin", 50, 100, 0], ["Psychic", 90, 100, 0]] 
+    },
+    { 
+        "name": "Starmie", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["water", "psychic"], 
+        "habitat": "water", 
+        "stats": { "hp": 60, "atk": 75, "def": 85, "spa": 100, "spd": 85, "spe": 115 }, 
+        "moves": [["Scald", 80, 100, 0], ["Ice Beam", 90, 100, 0], ["Thunderbolt", 90, 100, 0], ["Rapid Spin", 50, 100, 0], ["Psychic", 90, 100, 0]] 
+    },
+    { 
+        "name": "Scyther", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["bug", "flying"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 70, "atk": 110, "def": 80, "spa": 55, "spd": 80, "spe": 105 }, 
+        "moves": [["U-turn", 70, 100, 0], ["Bug Bite", 60, 100, 0], ["Defog", 0, "—", 0], ["Swords Dance", 0, "—", 0], ["Roost", 0, "—", 50]] 
+    },
+    { 
+        "name": "Scizor", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["bug", "steel"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 70, "atk": 130, "def": 100, "spa": 55, "spd": 80, "spe": 65 }, 
+        "moves": [["Bullet Punch", 40, 100, 0], ["U-turn", 70, 100, 0], ["Swords Dance", 0, "—", 0], ["Superpower", 120, 100, 0], ["Knock Off", 65, 100, 0]] 
+    },
+    { 
+        "name": "Pinsir", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["bug"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 65, "atk": 125, "def": 100, "spa": 55, "spd": 70, "spe": 85 }, 
+        "moves": [["X-Scissor", 80, 100, 0], ["Close Combat", 120, 100, 0], ["Quick Attack", 40, 100, 0], ["Earthquake", 100, 100, 0], ["Swords Dance", 0, "—", 0]] 
+    },
+    { 
+        "name": "Lapras", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["water", "ice"], 
+        "habitat": "water", 
+        "stats": { "hp": 130, "atk": 85, "def": 80, "spa": 85, "spd": 95, "spe": 60 }, 
+        "moves": [["Freeze-Dry", 70, 100, 0], ["Hydro Pump", 110, 80, 0], ["Ice Beam", 90, 100, 0], ["Thunderbolt", 90, 100, 0], ["Toxic", 0, 90, 0]] 
+    },
+    { 
+        "name": "Eevee", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["normal"], 
+        "habitat": "city", 
+        "stats": { "hp": 55, "atk": 55, "def": 50, "spa": 45, "spd": 65, "spe": 55 }, 
+        "moves": [["Quick Attack", 40, 100, 0], ["Bite", 60, 100, 0], ["Covet", 60, 100, 0], ["Last Resort", 140, 100, 0], ["Baton Pass", 0, "—", 0]] 
+    },
+    { 
+        "name": "Vaporeon", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 130, "atk": 65, "def": 60, "spa": 110, "spd": 95, "spe": 65 }, 
+        "moves": [["Scald", 80, 100, 0], ["Ice Beam", 90, 100, 0], ["Wish", 0, "—", 50], ["Toxic", 0, 90, 0], ["Baton Pass", 0, "—", 0]] 
+    },
+    { 
+        "name": "Jolteon", 
+        "category": "Standard", 
         "evolution": "highest", 
         "types": ["electric"], 
-        "habitat": "all", 
-        "stats": { "hp": 88, "atk": 112, "def": 75, "spa": 102, "spd": 80, "spe": 143 }, 
-        "moves": [["Plasma Fists", 100, 100, 0], ["Volt Switch", 70, 100, 0], ["Close Combat", 120, 100, 0], ["Knock Off", 65, 100, 0], ["Bulk Up", 0, "—", 0]] 
+        "habitat": "city", 
+        "stats": { "hp": 65, "atk": 65, "def": 60, "spa": 110, "spd": 95, "spe": 130 }, 
+        "moves": [["Thunderbolt", 90, 100, 0], ["Volt Switch", 70, 100, 0], ["Hidden Power (Ice)", 60, 100, 0], ["Shadow Ball", 80, 100, 0], ["Baton Pass", 0, "—", 0]] 
     },
     { 
-        "name": "Marshadow", 
-        "category": "Mythical", 
+        "name": "Flareon", 
+        "category": "Standard", 
         "evolution": "highest", 
-        "types": ["fighting", "ghost"], 
+        "types": ["fire"], 
+        "habitat": "desert", 
+        "stats": { "hp": 65, "atk": 130, "def": 60, "spa": 95, "spd": 110, "spe": 65 }, 
+        "moves": [["Flare Blitz", 120, 100, 0], ["Superpower", 120, 100, 0], ["Quick Attack", 40, 100, 0], ["Iron Tail", 100, 75, 0], ["Wish", 0, "—", 50]] 
+    },
+    { 
+        "name": "Espeon", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["psychic"], 
+        "habitat": "city", 
+        "stats": { "hp": 65, "atk": 65, "def": 60, "spa": 130, "spd": 95, "spe": 110 }, 
+        "moves": [["Psychic", 90, 100, 0], ["Shadow Ball", 80, 100, 0], ["Dazzling Gleam", 80, 100, 0], ["Calm Mind", 0, "—", 0], ["Baton Pass", 0, "—", 0]] 
+    },
+    { 
+        "name": "Umbreon", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["dark"], 
+        "habitat": "city", 
+        "stats": { "hp": 95, "atk": 65, "def": 110, "spa": 60, "spd": 130, "spe": 65 }, 
+        "moves": [["Foul Play", 95, 100, 0], ["Toxic", 0, 90, 0], ["Wish", 0, "—", 50], ["Heal Bell", 0, "—", 0], ["Curse", 0, "—", 0]] 
+    },
+    { 
+        "name": "Leafeon", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["grass"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 65, "atk": 110, "def": 130, "spa": 60, "spd": 65, "spe": 95 }, 
+        "moves": [["Leaf Blade", 90, 100, 0], ["X-Scissor", 80, 100, 0], ["Knock Off", 65, 100, 0], ["Swords Dance", 0, "—", 0], ["Synthesis", 0, "—", 50]] 
+    },
+    { 
+        "name": "Glaceon", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["ice"], 
+        "habitat": "desert", 
+        "stats": { "hp": 65, "atk": 60, "def": 110, "spa": 130, "spd": 95, "spe": 65 }, 
+        "moves": [["Ice Beam", 90, 100, 0], ["Shadow Ball", 80, 100, 0], ["Hidden Power (Ground)", 60, 100, 0], ["Blizzard", 110, 70, 0], ["Wish", 0, "—", 50]] 
+    },
+    { 
+        "name": "Sylveon", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["fairy"], 
+        "habitat": "city", 
+        "stats": { "hp": 95, "atk": 65, "def": 65, "spa": 110, "spd": 130, "spe": 60 }, 
+        "moves": [["Hyper Voice", 90, 100, 0], ["Moonblast", 95, 100, 0], ["Psyshock", 80, 100, 0], ["Calm Mind", 0, "—", 0], ["Wish", 0, "—", 50]] 
+    },
+    { 
+        "name": "Porygon", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["normal"], 
+        "habitat": "city", 
+        "stats": { "hp": 65, "atk": 60, "def": 70, "spa": 85, "spd": 75, "spe": 40 }, 
+        "moves": [["Tri Attack", 80, 100, 0], ["Ice Beam", 90, 100, 0], ["Thunderbolt", 90, 100, 0], ["Discharge", 80, 100, 0], ["Shadow Ball", 80, 100, 0]] 
+    },
+    { 
+        "name": "Porygon2", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["normal"], 
+        "habitat": "city", 
+        "stats": { "hp": 85, "atk": 80, "def": 90, "spa": 105, "spd": 95, "spe": 60 }, 
+        "moves": [["Tri Attack", 80, 100, 0], ["Ice Beam", 90, 100, 0], ["Thunderbolt", 90, 100, 0], ["Toxic", 0, 90, 0], ["Recover", 0, "—", 50]] 
+    },
+    { 
+        "name": "Porygon-Z", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["normal"], 
+        "habitat": "city", 
+        "stats": { "hp": 85, "atk": 80, "def": 70, "spa": 135, "spd": 75, "spe": 90 }, 
+        "moves": [["Tri Attack", 80, 100, 0], ["Ice Beam", 90, 100, 0], ["Thunderbolt", 90, 100, 0], ["Shadow Ball", 80, 100, 0], ["Nasty Plot", 0, "—", 0]] 
+    },
+    { 
+        "name": "Snorlax", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["normal"], 
+        "habitat": "plains", 
+        "stats": { "hp": 160, "atk": 110, "def": 65, "spa": 65, "spd": 110, "spe": 30 }, 
+        "moves": [["Body Slam", 85, 100, 0], ["Crunch", 80, 100, 0], ["Heavy Slam", 0, 100, 0], ["Fire Punch", 75, 100, 0], ["Curse", 0, "—", 0]] 
+    },
+    { 
+        "name": "Hoothoot", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["normal", "flying"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 60, "atk": 30, "def": 30, "spa": 36, "spd": 56, "spe": 50 }, 
+        "moves": [["Air Slash", 75, 95, 0], ["U-turn", 70, 100, 0], ["Defog", 0, "—", 0], ["Roost", 0, "—", 50], ["Night Shade", 0, 100, 0]] 
+    },
+    { 
+        "name": "Noctowl", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["normal", "flying"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 100, "atk": 50, "def": 50, "spa": 86, "spd": 96, "spe": 70 }, 
+        "moves": [["Air Slash", 75, 95, 0], ["Night Shade", 0, 100, 0], ["Roost", 0, "—", 50], ["Defog", 0, "—", 0], ["U-turn", 70, 100, 0]] 
+    },
+    { 
+        "name": "Ledyba", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["bug", "flying"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 40, "atk": 20, "def": 30, "spa": 40, "spd": 80, "spe": 55 }, 
+        "moves": [["Bug Buzz", 90, 100, 0], ["U-turn", 70, 100, 0], ["Knock Off", 65, 100, 0], ["Roost", 0, "—", 50], ["Light Screen", 0, "—", 0]] 
+    },
+    { 
+        "name": "Ledian", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["bug", "flying"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 55, "atk": 35, "def": 50, "spa": 55, "spd": 110, "spe": 85 }, 
+        "moves": [["U-turn", 70, 100, 0], ["Knock Off", 65, 100, 0], ["Baton Pass", 0, "—", 0], ["Light Screen", 0, "—", 0], ["Roost", 0, "—", 50]] 
+    },
+    { 
+        "name": "Spinarak", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["bug", "poison"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 40, "atk": 60, "def": 40, "spa": 40, "spd": 40, "spe": 30 }, 
+        "moves": [["Poison Jab", 80, 100, 0], ["Sucker Punch", 70, 100, 0], ["Sticky Web", 0, "—", 0], ["Leech Life", 80, 100, 0], ["Shadow Sneak", 40, 100, 0]] 
+    },
+    { 
+        "name": "Ariados", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["bug", "poison"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 70, "atk": 90, "def": 70, "spa": 60, "spd": 70, "spe": 40 }, 
+        "moves": [["Poison Jab", 80, 100, 0], ["Sucker Punch", 70, 100, 0], ["Sticky Web", 0, "—", 0], ["Leech Life", 80, 100, 0], ["Shadow Sneak", 40, 100, 0]] 
+    },
+    { 
+        "name": "Pichu", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["electric"], 
+        "habitat": "plains", 
+        "stats": { "hp": 20, "atk": 40, "def": 15, "spa": 35, "spd": 35, "spe": 60 }, 
+        "moves": [["Thunder Shock", 40, 100, 0], ["Sweet Kiss", 0, 75, 0], ["Charm", 0, 100, 0], ["Disarming Voice", 40, "—", 0], ["Volt Tackle", 120, 100, 0]] 
+    },
+    { 
+        "name": "Pikachu", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["electric"], 
+        "habitat": "plains", 
+        "stats": { "hp": 35, "atk": 55, "def": 40, "spa": 50, "spd": 50, "spe": 90 }, 
+        "moves": [["Thunderbolt", 90, 100, 0], ["Electro Ball", 0, 100, 0], ["Quick Attack", 40, 100, 0], ["Iron Tail", 100, 75, 0], ["Volt Tackle", 120, 100, 0]] 
+    },
+    { 
+        "name": "Cleffa", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["fairy"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 50, "atk": 25, "def": 28, "spa": 45, "spd": 55, "spe": 15 }, 
+        "moves": [["Moonblast", 95, 100, 0], ["Wish", 0, "—", 50], ["Stored Power", 20, 100, 0], ["Healing Wish", 0, "—", 100], ["Protect", 0, "—", 0]] 
+    },
+    { 
+        "name": "Clefairy", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["fairy"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 70, "atk": 45, "def": 48, "spa": 60, "spd": 65, "spe": 35 }, 
+        "moves": [["Moonblast", 95, 100, 0], ["Wish", 0, "—", 50], ["Stored Power", 20, 100, 0], ["Stealth Rock", 0, "—", 0], ["Thunder Wave", 0, 90, 0]] 
+    },
+    { 
+        "name": "Clefable", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["fairy"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 95, "atk": 70, "def": 73, "spa": 95, "spd": 90, "spe": 60 }, 
+        "moves": [["Moonblast", 95, 100, 0], ["Calm Mind", 0, "—", 0], ["Flamethrower", 90, 100, 0], ["Wish", 0, "—", 50], ["Stealth Rock", 0, "—", 0]] 
+    },
+    { 
+        "name": "Igglybuff", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["normal", "fairy"], 
+        "habitat": "plains", 
+        "stats": { "hp": 90, "atk": 30, "def": 15, "spa": 40, "spd": 20, "spe": 15 }, 
+        "moves": [["Hyper Voice", 90, 100, 0], ["Draining Kiss", 50, 100, 50], ["Wish", 0, "—", 50], ["Heal Bell", 0, "—", 0], ["Sing", 0, 55, 0]] 
+    },
+    { 
+        "name": "Jigglypuff", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["normal", "fairy"], 
+        "habitat": "plains", 
+        "stats": { "hp": 115, "atk": 45, "def": 20, "spa": 45, "spd": 25, "spe": 20 }, 
+        "moves": [["Hyper Voice", 90, 100, 0], ["Draining Kiss", 50, 100, 50], ["Wish", 0, "—", 50], ["Heal Bell", 0, "—", 0], ["Sing", 0, 55, 0]] 
+    },
+    { 
+        "name": "Wigglytuff", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["normal", "fairy"], 
+        "habitat": "plains", 
+        "stats": { "hp": 140, "atk": 70, "def": 45, "spa": 85, "spd": 50, "spe": 45 }, 
+        "moves": [["Hyper Voice", 90, 100, 0], ["Dazzling Gleam", 80, 100, 0], ["Wish", 0, "—", 50], ["Heal Bell", 0, "—", 0], ["Ice Beam", 90, 100, 0]] 
+    },
+    { 
+        "name": "Aron", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["steel", "rock"], 
+        "habitat": "cave", 
+        "stats": { "hp": 50, "atk": 70, "def": 100, "spa": 40, "spd": 40, "spe": 30 }, 
+        "moves": [["Iron Head", 80, 100, 0], ["Rock Slide", 75, 90, 0], ["Head Smash", 150, 80, 0], ["Earthquake", 100, 100, 0], ["Stealth Rock", 0, "—", 0]] 
+    },
+    { 
+        "name": "Lairon", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["steel", "rock"], 
+        "habitat": "cave", 
+        "stats": { "hp": 60, "atk": 90, "def": 140, "spa": 50, "spd": 50, "spe": 40 }, 
+        "moves": [["Iron Head", 80, 100, 0], ["Rock Slide", 75, 90, 0], ["Head Smash", 150, 80, 0], ["Earthquake", 100, 100, 0], ["Stealth Rock", 0, "—", 0]] 
+    },
+    { 
+        "name": "Aggron", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["steel", "rock"], 
+        "habitat": "cave", 
+        "stats": { "hp": 70, "atk": 110, "def": 180, "spa": 60, "spd": 60, "spe": 50 }, 
+        "moves": [["Heavy Slam", 0, 100, 0], ["Iron Head", 80, 100, 0], ["Head Smash", 150, 80, 0], ["Earthquake", 100, 100, 0], ["Stealth Rock", 0, "—", 0]] 
+    },
+    { 
+        "name": "Misdreavus", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["ghost"], 
+        "habitat": "cave", 
+        "stats": { "hp": 60, "atk": 60, "def": 60, "spa": 85, "spd": 85, "spe": 85 }, 
+        "moves": [["Shadow Ball", 80, 100, 0], ["Thunderbolt", 90, 100, 0], ["Will-O-Wisp", 0, 85, 0], ["Pain Split", 0, "—", 0], ["Perish Song", 0, "—", 0]] 
+    },
+    { 
+        "name": "Mismagius", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["ghost"], 
+        "habitat": "cave", 
+        "stats": { "hp": 60, "atk": 60, "def": 60, "spa": 105, "spd": 105, "spe": 105 }, 
+        "moves": [["Shadow Ball", 80, 100, 0], ["Thunderbolt", 90, 100, 0], ["Dazzling Gleam", 80, 100, 0], ["Will-O-Wisp", 0, 85, 0], ["Pain Split", 0, "—", 0]] 
+    },
+    { 
+        "name": "Wailmer", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 130, "atk": 70, "def": 35, "spa": 70, "spd": 35, "spe": 60 }, 
+        "moves": [["Water Spout", 150, 100, 0], ["Hydro Pump", 110, 80, 0], ["Ice Beam", 90, 100, 0], ["Surf", 90, 100, 0], ["Toxic", 0, 90, 0]] 
+    },
+    { 
+        "name": "Wailord", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 170, "atk": 90, "def": 45, "spa": 90, "spd": 45, "spe": 60 }, 
+        "moves": [["Water Spout", 150, 100, 0], ["Hydro Pump", 110, 80, 0], ["Ice Beam", 90, 100, 0], ["Surf", 90, 100, 0], ["Toxic", 0, 90, 0]] 
+    },
+    { 
+        "name": "Skarmory", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["steel", "flying"], 
+        "habitat": "desert", 
+        "stats": { "hp": 65, "atk": 80, "def": 140, "spa": 40, "spd": 70, "spe": 70 }, 
+        "moves": [["Brave Bird", 120, 100, 0], ["Iron Head", 80, 100, 0], ["Stealth Rock", 0, "—", 0], ["Roost", 0, "—", 50], ["Whirlwind", 0, "—", 0]] 
+    },
+    { 
+        "name": "Trapinch", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["ground"], 
+        "habitat": "desert", 
+        "stats": { "hp": 45, "atk": 100, "def": 45, "spa": 45, "spd": 45, "spe": 10 }, 
+        "moves": [["Earthquake", 100, 100, 0], ["Crunch", 80, 100, 0], ["Superpower", 120, 100, 0], ["Rock Slide", 75, 90, 0], ["Fissure", 0, 30, 0]] 
+    },
+    { 
+        "name": "Vibrava", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["ground", "dragon"], 
+        "habitat": "desert", 
+        "stats": { "hp": 50, "atk": 70, "def": 50, "spa": 50, "spd": 50, "spe": 70 }, 
+        "moves": [["Earth Power", 90, 100, 0], ["Dragon Breath", 60, 100, 0], ["U-turn", 70, 100, 0], ["Bug Buzz", 90, 100, 0], ["Roost", 0, "—", 50]] 
+    },
+    { 
+        "name": "Flygon", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["ground", "dragon"], 
+        "habitat": "desert", 
+        "stats": { "hp": 80, "atk": 100, "def": 80, "spa": 80, "spd": 80, "spe": 100 }, 
+        "moves": [["Earthquake", 100, 100, 0], ["Dragon Claw", 80, 100, 0], ["U-turn", 70, 100, 0], ["Fire Punch", 75, 100, 0], ["Dragon Dance", 0, "—", 0]] 
+    },
+    { 
+        "name": "Mandibuzz", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["dark", "flying"], 
+        "habitat": "desert", 
+        "stats": { "hp": 110, "atk": 65, "def": 105, "spa": 55, "spd": 95, "spe": 80 }, 
+        "moves": [["Foul Play", 95, 100, 0], ["U-turn", 70, 100, 0], ["Roost", 0, "—", 50], ["Knock Off", 65, 100, 0], ["Defog", 0, "—", 0]] 
+    },
+    { 
+        "name": "Heatmor", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["fire"], 
+        "habitat": "desert", 
+        "stats": { "hp": 85, "atk": 97, "def": 66, "spa": 105, "spd": 66, "spe": 65 }, 
+        "moves": [["Flamethrower", 90, 100, 0], ["Giga Drain", 75, 100, 50], ["Sucker Punch", 70, 100, 0], ["Thunder Punch", 75, 100, 0], ["Knock Off", 65, 100, 0]] 
+    },
+    { 
+        "name": "Durant", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["bug", "steel"], 
+        "habitat": "cave", 
+        "stats": { "hp": 58, "atk": 109, "def": 112, "spa": 48, "spd": 48, "spe": 109 }, 
+        "moves": [["Iron Head", 80, 100, 0], ["X-Scissor", 80, 100, 0], ["Superpower", 120, 100, 0], ["Thunder Wave", 0, 90, 0], ["Stealth Rock", 0, "—", 0]] 
+    },
+    { 
+        "name": "Zygarde (50% Forme)", 
+        "category": "Legendary", 
+        "evolution": "highest", 
+        "types": ["dragon", "ground"], 
         "habitat": "all", 
-        "stats": { "hp": 90, "atk": 125, "def": 80, "spa": 90, "spd": 90, "spe": 125 }, 
-        "moves": [["Spectral Thief", 90, 100, 0], ["Close Combat", 120, 100, 0], ["Shadow Sneak", 40, 100, 0], ["Ice Punch", 75, 100, 0], ["Bulk Up", 0, "—", 0]] 
+        "stats": { "hp": 108, "atk": 100, "def": 121, "spa": 81, "spd": 95, "spe": 95 }, 
+        "moves": [["Thousand Arrows", 90, 100, 0], ["Thousand Waves", 90, 100, 0], ["Dragon Dance", 0, "—", 0], ["Earthquake", 100, 100, 0], ["Extreme Speed", 80, 100, 0]] 
+    },
+    { 
+        "name": "Dedenne", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["electric", "fairy"], 
+        "habitat": "plains", 
+        "stats": { "hp": 67, "atk": 58, "def": 57, "spa": 81, "spd": 67, "spe": 101 }, 
+        "moves": [["Thunderbolt", 90, 100, 0], ["Play Rough", 90, 90, 0], ["U-turn", 70, 100, 0], ["Volt Switch", 70, 100, 0], ["Nuzzle", 20, 100, 0]] 
+    },
+    { 
+        "name": "Carbink", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["rock", "fairy"], 
+        "habitat": "cave", 
+        "stats": { "hp": 50, "atk": 50, "def": 150, "spa": 50, "spd": 150, "spe": 50 }, 
+        "moves": [["Moonblast", 95, 100, 0], ["Stealth Rock", 0, "—", 0], ["Toxic", 0, 90, 0], ["Gyro Ball", 0, 100, 0], ["Explosion", 250, 100, 0]] 
+    },
+    { 
+        "name": "Klefki", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["steel", "fairy"], 
+        "habitat": "city", 
+        "stats": { "hp": 57, "atk": 80, "def": 91, "spa": 80, "spd": 87, "spe": 75 }, 
+        "moves": [["Foul Play", 95, 100, 0], ["Thunder Wave", 0, 90, 0], ["Spikes", 0, "—", 0], ["Magnet Rise", 0, "—", 0], ["Draining Kiss", 50, 100, 50]] 
+    },
+    { 
+        "name": "Phantump", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["ghost", "grass"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 43, "atk": 70, "def": 48, "spa": 50, "spd": 60, "spe": 38 }, 
+        "moves": [["Phantom Force", 90, 100, 0], ["Horn Leech", 75, 100, 0], ["Will-O-Wisp", 0, 85, 0], ["Leech Seed", 0, 90, 0], ["Shadow Claw", 70, 100, 0]] 
+    },
+    { 
+        "name": "Trevenant", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["ghost", "grass"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 85, "atk": 110, "def": 76, "spa": 65, "spd": 82, "spe": 56 }, 
+        "moves": [["Phantom Force", 90, 100, 0], ["Wood Hammer", 120, 100, 0], ["Will-O-Wisp", 0, 85, 0], ["Leech Seed", 0, 90, 0], ["Horn Leech", 75, 100, 0]] 
+    },
+    { 
+        "name": "Pumpkaboo (Average)", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["ghost", "grass"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 49, "atk": 66, "def": 70, "spa": 44, "spd": 55, "spe": 51 }, 
+        "moves": [["Shadow Ball", 80, 100, 0], ["Giga Drain", 75, 100, 50], ["Will-O-Wisp", 0, 85, 0], ["Leech Seed", 0, 90, 0], ["Phantom Force", 90, 100, 0]] 
+    },
+    { 
+        "name": "Gourgeist (Average)", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["ghost", "grass"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 65, "atk": 90, "def": 122, "spa": 58, "spd": 75, "spe": 84 }, 
+        "moves": [["Shadow Ball", 80, 100, 0], ["Seed Bomb", 80, 100, 0], ["Will-O-Wisp", 0, 85, 0], ["Leech Seed", 0, 90, 0], ["Phantom Force", 90, 100, 0]] 
+    },
+    { 
+        "name": "Bergmite", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["ice"], 
+        "habitat": "desert", 
+        "stats": { "hp": 55, "atk": 69, "def": 85, "spa": 32, "spd": 35, "spe": 28 }, 
+        "moves": [["Avalanche", 60, 100, 0], ["Gyro Ball", 0, 100, 0], ["Stone Edge", 100, 80, 0], ["Mirror Coat", 0, 100, 0], ["Rapid Spin", 50, 100, 0]] 
+    },
+    { 
+        "name": "Avalugg", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["ice"], 
+        "habitat": "desert", 
+        "stats": { "hp": 95, "atk": 117, "def": 184, "spa": 44, "spd": 46, "spe": 28 }, 
+        "moves": [["Avalanche", 60, 100, 0], ["Gyro Ball", 0, 100, 0], ["Stone Edge", 100, 80, 0], ["Mirror Coat", 0, 100, 0], ["Rapid Spin", 50, 100, 0]] 
+    },
+    { 
+        "name": "Noibat", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["flying", "dragon"], 
+        "habitat": "cave", 
+        "stats": { "hp": 40, "atk": 30, "def": 35, "spa": 45, "spd": 40, "spe": 55 }, 
+        "moves": [["Air Slash", 75, 95, 0], ["Dragon Pulse", 85, 100, 0], ["U-turn", 70, 100, 0], ["Super Fang", 0, 90, 0], ["Tailwind", 0, "—", 0]] 
+    },
+    { 
+        "name": "Noivern", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["flying", "dragon"], 
+        "habitat": "cave", 
+        "stats": { "hp": 85, "atk": 70, "def": 80, "spa": 97, "spd": 80, "spe": 123 }, 
+        "moves": [["Air Slash", 75, 95, 0], ["Dragon Pulse", 85, 100, 0], ["U-turn", 70, 100, 0], ["Boomburst", 140, 100, 0], ["Flamethrower", 90, 100, 0]] 
+    },
+    { 
+        "name": "Jynx", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["ice", "psychic"], 
+        "habitat": "desert", 
+        "stats": { "hp": 65, "atk": 50, "def": 35, "spa": 115, "spd": 95, "spe": 95 }, 
+        "moves": [["Ice Beam", 90, 100, 0], ["Psychic", 90, 100, 0], ["Focus Blast", 120, 70, 0], ["Nasty Plot", 0, "—", 0], ["Lovely Kiss", 0, 75, 0]] 
+    },
+    { 
+        "name": "Electabuzz", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["electric"], 
+        "habitat": "plains", 
+        "stats": { "hp": 65, "atk": 83, "def": 57, "spa": 95, "spd": 85, "spe": 105 }, 
+        "moves": [["Thunderbolt", 90, 100, 0], ["Ice Punch", 75, 100, 0], ["Volt Switch", 70, 100, 0], ["Cross Chop", 100, 80, 0], ["Hidden Power (Ice)", 60, 100, 0]] 
+    },
+    { 
+        "name": "Electivire", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["electric"], 
+        "habitat": "plains", 
+        "stats": { "hp": 75, "atk": 123, "def": 67, "spa": 95, "spd": 85, "spe": 95 }, 
+        "moves": [["Wild Charge", 90, 100, 0], ["Ice Punch", 75, 100, 0], ["Earthquake", 100, 100, 0], ["Cross Chop", 100, 80, 0], ["Volt Switch", 70, 100, 0]] 
+    },
+    { 
+        "name": "Magmar", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["fire"], 
+        "habitat": "desert", 
+        "stats": { "hp": 65, "atk": 95, "def": 57, "spa": 100, "spd": 85, "spe": 93 }, 
+        "moves": [["Flamethrower", 90, 100, 0], ["Thunderbolt", 90, 100, 0], ["Focus Blast", 120, 70, 0], ["Hidden Power (Grass)", 60, 100, 0], ["Will-O-Wisp", 0, 85, 0]] 
+    },
+    { 
+        "name": "Magmortar", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["fire"], 
+        "habitat": "desert", 
+        "stats": { "hp": 75, "atk": 95, "def": 67, "spa": 125, "spd": 95, "spe": 83 }, 
+        "moves": [["Flamethrower", 90, 100, 0], ["Thunderbolt", 90, 100, 0], ["Focus Blast", 120, 70, 0], ["Hidden Power (Grass)", 60, 100, 0], ["Psychic", 90, 100, 0]] 
+    },
+    { 
+        "name": "Sneasel", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["dark", "ice"], 
+        "habitat": "desert", 
+        "stats": { "hp": 55, "atk": 95, "def": 55, "spa": 35, "spd": 75, "spe": 115 }, 
+        "moves": [["Ice Shard", 40, 100, 0], ["Knock Off", 65, 100, 0], ["Pursuit", 40, 100, 0], ["Ice Punch", 75, 100, 0], ["Swords Dance", 0, "—", 0]] 
+    },
+    { 
+        "name": "Weavile", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["dark", "ice"], 
+        "habitat": "desert", 
+        "stats": { "hp": 70, "atk": 120, "def": 65, "spa": 45, "spd": 85, "spe": 125 }, 
+        "moves": [["Ice Shard", 40, 100, 0], ["Knock Off", 65, 100, 0], ["Ice Punch", 75, 100, 0], ["Swords Dance", 0, "—", 0], ["Low Kick", 0, 100, 0]] 
+    },
+    { 
+        "name": "Bagon", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["dragon"], 
+        "habitat": "cave", 
+        "stats": { "hp": 45, "atk": 75, "def": 60, "spa": 40, "spd": 30, "spe": 50 }, 
+        "moves": [["Dragon Claw", 80, 100, 0], ["Dragon Dance", 0, "—", 0], ["Stone Edge", 100, 80, 0], ["Fire Fang", 65, 95, 0], ["Zen Headbutt", 80, 90, 0]] 
+    },
+    { 
+        "name": "Shelgon", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["dragon"], 
+        "habitat": "cave", 
+        "stats": { "hp": 65, "atk": 95, "def": 100, "spa": 60, "spd": 50, "spe": 50 }, 
+        "moves": [["Dragon Claw", 80, 100, 0], ["Dragon Dance", 0, "—", 0], ["Stone Edge", 100, 80, 0], ["Fire Fang", 65, 95, 0], ["Iron Defense", 0, "—", 0]] 
+    },
+    { 
+        "name": "Salamence", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["dragon", "flying"], 
+        "habitat": "cave", 
+        "stats": { "hp": 95, "atk": 135, "def": 80, "spa": 110, "spd": 80, "spe": 100 }, 
+        "moves": [["Outrage", 120, 100, 0], ["Draco Meteor", 130, 90, 0], ["Fire Blast", 110, 85, 0], ["Roost", 0, "—", 50], ["Iron Tail", 100, 75, 0]] 
+    },
+    { 
+        "name": "Turtwig", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["grass"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 55, "atk": 68, "def": 64, "spa": 45, "spd": 55, "spe": 31 }, 
+        "moves": [["Leaf Storm", 130, 90, 0], ["Earth Power", 90, 100, 0], ["Body Slam", 85, 100, 0], ["Rock Slide", 75, 90, 0], ["Seed Bomb", 80, 100, 0]] 
+    },
+    { 
+        "name": "Grotle", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["grass"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 75, "atk": 89, "def": 85, "spa": 55, "spd": 65, "spe": 36 }, 
+        "moves": [["Leaf Storm", 130, 90, 0], ["Earth Power", 90, 100, 0], ["Body Slam", 85, 100, 0], ["Rock Slide", 75, 90, 0], ["Seed Bomb", 80, 100, 0]] 
+    },
+    { 
+        "name": "Torterra", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["grass", "ground"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 95, "atk": 109, "def": 105, "spa": 75, "spd": 85, "spe": 56 }, 
+        "moves": [["Earthquake", 100, 100, 0], ["Wood Hammer", 120, 100, 0], ["Stone Edge", 100, 80, 0], ["Rock Slide", 75, 90, 0], ["Leech Seed", 0, 90, 0]] 
+    },
+    { 
+        "name": "Chimchar", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["fire"], 
+        "habitat": "desert", 
+        "stats": { "hp": 44, "atk": 58, "def": 44, "spa": 58, "spd": 44, "spe": 61 }, 
+        "moves": [["Flare Blitz", 120, 100, 0], ["Close Combat", 120, 100, 0], ["Fire Punch", 75, 100, 0], ["U-turn", 70, 100, 0], ["Fake Out", 40, 100, 0]] 
+    },
+    { 
+        "name": "Monferno", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["fire", "fighting"], 
+        "habitat": "desert", 
+        "stats": { "hp": 64, "atk": 78, "def": 52, "spa": 78, "spd": 52, "spe": 81 }, 
+        "moves": [["Flare Blitz", 120, 100, 0], ["Close Combat", 120, 100, 0], ["Fire Punch", 75, 100, 0], ["U-turn", 70, 100, 0], ["Fake Out", 40, 100, 0]] 
+    },
+    { 
+        "name": "Infernape", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["fire", "fighting"], 
+        "habitat": "desert", 
+        "stats": { "hp": 76, "atk": 104, "def": 71, "spa": 104, "spd": 71, "spe": 108 }, 
+        "moves": [["Flare Blitz", 120, 100, 0], ["Close Combat", 120, 100, 0], ["U-turn", 70, 100, 0], ["Mach Punch", 40, 100, 0], ["Stone Edge", 100, 80, 0]] 
+    },
+    { 
+        "name": "Piplup", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 53, "atk": 51, "def": 53, "spa": 61, "spd": 56, "spe": 40 }, 
+        "moves": [["Hydro Pump", 110, 80, 0], ["Ice Beam", 90, 100, 0], ["Scald", 80, 100, 0], ["Aqua Jet", 40, 100, 0], ["Defog", 0, "—", 0]] 
+    },
+    { 
+        "name": "Prinplup", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 64, "atk": 66, "def": 68, "spa": 81, "spd": 76, "spe": 50 }, 
+        "moves": [["Hydro Pump", 110, 80, 0], ["Ice Beam", 90, 100, 0], ["Scald", 80, 100, 0], ["Aqua Jet", 40, 100, 0], ["Defog", 0, "—", 0]] 
+    },
+    { 
+        "name": "Empoleon", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["water", "steel"], 
+        "habitat": "water", 
+        "stats": { "hp": 84, "atk": 86, "def": 88, "spa": 111, "spd": 101, "spe": 60 }, 
+        "moves": [["Hydro Pump", 110, 80, 0], ["Flash Cannon", 80, 100, 0], ["Ice Beam", 90, 100, 0], ["Defog", 0, "—", 0], ["Scald", 80, 100, 0]] 
+    },
+    { 
+        "name": "Porygon", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["normal"], 
+        "habitat": "city", 
+        "stats": { "hp": 65, "atk": 60, "def": 70, "spa": 85, "spd": 75, "spe": 40 }, 
+        "moves": [["Tri Attack", 80, 100, 0], ["Ice Beam", 90, 100, 0], ["Thunderbolt", 90, 100, 0], ["Discharge", 80, 100, 0], ["Shadow Ball", 80, 100, 0]] 
+    },
+    { 
+        "name": "Porygon2", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["normal"], 
+        "habitat": "city", 
+        "stats": { "hp": 85, "atk": 80, "def": 90, "spa": 105, "spd": 95, "spe": 60 }, 
+        "moves": [["Tri Attack", 80, 100, 0], ["Ice Beam", 90, 100, 0], ["Thunderbolt", 90, 100, 0], ["Toxic", 0, 90, 0], ["Recover", 0, "—", 50]] 
+    },
+    { 
+        "name": "Porygon-Z", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["normal"], 
+        "habitat": "city", 
+        "stats": { "hp": 85, "atk": 80, "def": 70, "spa": 135, "spd": 75, "spe": 90 }, 
+        "moves": [["Tri Attack", 80, 100, 0], ["Ice Beam", 90, 100, 0], ["Thunderbolt", 90, 100, 0], ["Shadow Ball", 80, 100, 0], ["Nasty Plot", 0, "—", 0]] 
+    },
+    { 
+        "name": "Carnivine", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["grass"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 74, "atk": 100, "def": 72, "spa": 90, "spd": 72, "spe": 46 }, 
+        "moves": [["Power Whip", 120, 85, 0], ["Sucker Punch", 70, 100, 0], ["Knock Off", 65, 100, 0], ["Sleep Powder", 0, 75, 0], ["Swords Dance", 0, "—", 0]] 
+    },
+    { 
+        "name": "Finneon", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 49, "atk": 49, "def": 56, "spa": 49, "spd": 61, "spe": 66 }, 
+        "moves": [["Scald", 80, 100, 0], ["Ice Beam", 90, 100, 0], ["U-turn", 70, 100, 0], ["Aqua Ring", 0, "—", 0], ["Toxic", 0, 90, 0]] 
+    },
+    { 
+        "name": "Lumineon", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 69, "atk": 69, "def": 76, "spa": 69, "spd": 86, "spe": 91 }, 
+        "moves": [["Scald", 80, 100, 0], ["Ice Beam", 90, 100, 0], ["U-turn", 70, 100, 0], ["Defog", 0, "—", 0], ["Toxic", 0, 90, 0]] 
+    },
+    { 
+        "name": "Snivy", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["grass"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 45, "atk": 45, "def": 55, "spa": 45, "spd": 55, "spe": 63 }, 
+        "moves": [["Leaf Storm", 130, 90, 0], ["Hidden Power (Fire)", 60, 100, 0], ["Giga Drain", 75, 100, 50], ["Knock Off", 65, 100, 0], ["Synthesis", 0, "—", 50]] 
+    },
+    { 
+        "name": "Servine", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["grass"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 60, "atk": 60, "def": 75, "spa": 60, "spd": 75, "spe": 83 }, 
+        "moves": [["Leaf Storm", 130, 90, 0], ["Hidden Power (Fire)", 60, 100, 0], ["Giga Drain", 75, 100, 50], ["Knock Off", 65, 100, 0], ["Synthesis", 0, "—", 50]] 
+    },
+    { 
+        "name": "Serperior", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["grass"], 
+        "habitat": "jungle", 
+        "stats": { "hp": 75, "atk": 75, "def": 95, "spa": 75, "spd": 95, "spe": 113 }, 
+        "moves": [["Leaf Storm", 130, 90, 0], ["Hidden Power (Fire)", 60, 100, 0], ["Giga Drain", 75, 100, 50], ["Knock Off", 65, 100, 0], ["Substitute", 0, "—", 0]] 
+    },
+    { 
+        "name": "Tepig", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["fire"], 
+        "habitat": "desert", 
+        "stats": { "hp": 65, "atk": 63, "def": 45, "spa": 45, "spd": 45, "spe": 45 }, 
+        "moves": [["Flare Blitz", 120, 100, 0], ["Superpower", 120, 100, 0], ["Head Smash", 150, 80, 0], ["Wild Charge", 90, 100, 0], ["Iron Head", 80, 100, 0]] 
+    },
+    { 
+        "name": "Pignite", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["fire", "fighting"], 
+        "habitat": "desert", 
+        "stats": { "hp": 90, "atk": 93, "def": 55, "spa": 70, "spd": 55, "spe": 55 }, 
+        "moves": [["Flare Blitz", 120, 100, 0], ["Superpower", 120, 100, 0], ["Head Smash", 150, 80, 0], ["Wild Charge", 90, 100, 0], ["Iron Head", 80, 100, 0]] 
+    },
+    { 
+        "name": "Emboar", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["fire", "fighting"], 
+        "habitat": "desert", 
+        "stats": { "hp": 110, "atk": 123, "def": 65, "spa": 100, "spd": 65, "spe": 65 }, 
+        "moves": [["Flare Blitz", 120, 100, 0], ["Superpower", 120, 100, 0], ["Head Smash", 150, 80, 0], ["Wild Charge", 90, 100, 0], ["Iron Head", 80, 100, 0]] 
+    },
+    { 
+        "name": "Oshawott", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 45, "atk": 55, "def": 45, "spa": 63, "spd": 45, "spe": 45 }, 
+        "moves": [["Hydro Pump", 110, 80, 0], ["Ice Beam", 90, 100, 0], ["Aqua Jet", 40, 100, 0], ["Swords Dance", 0, "—", 0], ["Aqua Tail", 90, 90, 0]] 
+    },
+    { 
+        "name": "Dewott", 
+        "category": "Standard", 
+        "evolution": "middle", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 60, "atk": 75, "def": 60, "spa": 83, "spd": 60, "spe": 60 }, 
+        "moves": [["Hydro Pump", 110, 80, 0], ["Ice Beam", 90, 100, 0], ["Aqua Jet", 40, 100, 0], ["Swords Dance", 0, "—", 0], ["Aqua Tail", 90, 90, 0]] 
+    },
+    { 
+        "name": "Samurott", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["water"], 
+        "habitat": "water", 
+        "stats": { "hp": 95, "atk": 100, "def": 85, "spa": 108, "spd": 70, "spe": 70 }, 
+        "moves": [["Hydro Pump", 110, 80, 0], ["Ice Beam", 90, 100, 0], ["Aqua Jet", 40, 100, 0], ["Swords Dance", 0, "—", 0], ["Megahorn", 120, 85, 0]] 
+    },
+    { 
+        "name": "Deerling", 
+        "category": "Standard", 
+        "evolution": "lowest", 
+        "types": ["normal", "grass"], 
+        "habitat": "plains", 
+        "stats": { "hp": 60, "atk": 60, "def": 50, "spa": 40, "spd": 50, "spe": 75 }, 
+        "moves": [["Horn Leech", 75, 100, 0], ["Jump Kick", 100, 95, 0], ["Wild Charge", 90, 100, 0], ["Baton Pass", 0, "—", 0], ["Synthesis", 0, "—", 50]] 
+    },
+    { 
+        "name": "Sawsbuck", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["normal", "grass"], 
+        "habitat": "plains", 
+        "stats": { "hp": 80, "atk": 100, "def": 70, "spa": 60, "spd": 70, "spe": 95 }, 
+        "moves": [["Horn Leech", 75, 100, 0], ["Jump Kick", 100, 95, 0], ["Wild Charge", 90, 100, 0], ["Baton Pass", 0, "—", 0], ["Swords Dance", 0, "—", 0]] 
+    },
+    { 
+        "name": "Bouffalant", 
+        "category": "Standard", 
+        "evolution": "highest", 
+        "types": ["normal"], 
+        "habitat": "plains", 
+        "stats": { "hp": 95, "atk": 110, "def": 95, "spa": 40, "spd": 95, "spe": 55 }, 
+        "moves": [["Head Charge", 120, 100, 0], ["Earthquake", 100, 100, 0], ["Iron Head", 80, 100, 0], ["Stone Edge", 100, 80, 0], ["Swords Dance", 0, "—", 0]] 
     }
 ]
-    
