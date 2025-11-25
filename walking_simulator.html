@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Walking Simulator</title>
+    <title>Alolan Walking Simulator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -52,7 +52,7 @@
                 <i class="fas fa-arrow-left mr-2"></i> Back to Utility Hub
             </a>
             <h1 class="text-4xl font-extrabold text-gray-900">
-                <span class="text-indigo-600">Pokémon</span> Walking Simulator
+                <span class="text-indigo-600">Alolan</span> Walking Simulator 🏝️
             </h1>
         </header>
 
@@ -69,7 +69,7 @@
                     </div>
                     <div class="text-sm font-medium text-gray-500 flex items-center">
                         <i id="biome-icon" class="fas fa-tree mr-2"></i>
-                        Biome: <span id="biome-name" class="ml-1 font-bold">Forest</span>
+                        Biome: <span id="biome-name" class="ml-1 font-bold">Lush Jungle</span>
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@
                 <!-- Biome Description -->
                 <div class="mt-4 p-3 rounded-lg bg-gray-50 border-t border-gray-200">
                     <p id="biome-info" class="text-center text-md font-semibold text-gray-600">
-                        You are currently walking through the Forest biome.
+                        You are currently walking through the Lush Jungle biome.
                     </p>
                 </div>
             </div>
@@ -154,11 +154,11 @@
     <script>
         // --- Configuration Data ---
         const BIOMES = [
-          { name: 'Forest', color: 'bg-green-700', icon: 'fas fa-tree', text: 'text-green-200', pokemonNames: ['Rowlet', 'Phantump', 'Snivy', 'Sawsbuck'] },
-          { name: 'Coast/Beach', color: 'bg-blue-500', icon: 'fas fa-anchor', text: 'text-blue-100', pokemonNames: ['Wimpod', 'Oshawott', 'Finneon', 'Lumineon'] },
-          { name: 'Volcanic Area', color: 'bg-red-800', icon: 'fas fa-sun', text: 'text-red-200', pokemonNames: ['Magmar', 'Heatmor', 'Salandit', 'Tepig'] },
-          { name: 'Cave/Mountain', color: 'bg-gray-700', icon: 'fas fa-mountain', text: 'text-gray-200', pokemonNames: ['Bagon', 'Noibat', 'Carbink', 'Durant'] },
-          { name: 'City/Urban', color: 'bg-indigo-600', icon: 'fas fa-city', text: 'text-indigo-200', pokemonNames: ['Porygon', 'Klefki', 'Dedenne', 'Electabuzz'] },
+          { name: 'Lush Jungle', type: 'jungle', color: 'bg-green-700', icon: 'fas fa-tree', text: 'text-green-200', pokemonNames: ['Dartrix', 'Bounsweet', 'Trumbeak', 'Fomantis'] },
+          { name: 'Sandy Beach', type: 'water', color: 'bg-blue-500', icon: 'fas fa-anchor', text: 'text-blue-100', pokemonNames: ['Wimpod', 'Bruxish', 'Sandygast', 'Wishiwashi'] },
+          { name: 'Wela Volcano Park', type: 'desert', color: 'bg-red-800', icon: 'fas fa-fire', text: 'text-red-200', pokemonNames: ['Salandit', 'Rockruff', 'Turtonator', 'Torkoal'], noPokecenter: true },
+          { name: 'Vast Poni Canyon', type: 'cave', color: 'bg-gray-700', icon: 'fas fa-mountain', text: 'text-gray-200', pokemonNames: ['Jangmo-o', 'Noibat', 'Carbink', 'Mimikyu'], noPokecenter: true },
+          { name: 'Hau\'oli City', type: 'city', color: 'bg-indigo-600', icon: 'fas fa-city', text: 'text-indigo-200', pokemonNames: ['Meowth (Alola)', 'Klefki', 'Dedenne', 'Crabrawler'] },
         ];
 
         // --- Global State ---
@@ -256,14 +256,12 @@
             const infoEl = document.getElementById('biome-info');
             
             // 1. Update Container Background
-            // Remove previous background class
             BIOMES.forEach(b => container.classList.remove(b.color));
-            // Add new background class (CSS transition handles the visual swap)
             container.classList.add(biome.color);
             
             // 2. Update Text Info
             nameEl.textContent = biome.name;
-            iconEl.className = `${biome.icon} mr-2`; // Update icon class
+            iconEl.className = `${biome.icon} mr-2`;
             
             // 3. Update description text
             infoEl.innerHTML = `<span class="text-xl mr-2 ${biome.text}"><i class="${biome.icon}"></i></span> You are currently walking through the ${biome.name} biome.`;
@@ -355,6 +353,7 @@
                     <span class="text-gray-800 flex items-center text-sm font-medium">
                         <i class="${biome.icon} w-5 h-5 mr-2 text-indigo-500"></i>
                         <span class="ml-2">${biome.name}</span>
+                        ${biome.noPokecenter ? '<span class="ml-2 px-2 py-0.5 text-xs bg-red-500 text-white rounded-full">No PC</span>' : ''}
                     </span>
                 </label>
             `).join('');
@@ -393,49 +392,50 @@
         // --- Timer Handlers ---
 
         const handleBiomeChange = () => {
-            // Filter available biomes
             const availableBiomes = BIOMES.filter(biome => !disabledBiomes[biome.name] && biome.name !== currentBiome.name);
 
             if (availableBiomes.length === 0) {
-                // If no other biomes available, just restart the timer
                 startTimers(); 
                 return;
             }
             
-            // Choose a new random biome
             const newBiome = availableBiomes[Math.floor(Math.random() * availableBiomes.length)];
             
-            // Trigger the visual transition
             currentBiome = newBiome;
             updateBiomeDisplay(currentBiome);
             
-            // Restart all timers (after the transition time)
-            setTimeout(startTimers, 1500); // 1.5s delay to match CSS transition
+            setTimeout(startTimers, 1500);
         };
 
         const handleEncounter = () => {
-            // Pause the simulation immediately
             clearAllTimers();
             status = 'encounter';
             updateStatusDisplay();
 
-            // Select Pokémon
             const names = currentBiome.pokemonNames;
             const pokemonName = names[Math.floor(Math.random() * names.length)];
             encounterPokemon = getPokemonDetails(pokemonName);
 
-            // Show encounter modal
             showEncounterModal(encounterPokemon);
-            updatePokecenterVisibility(false); // Hide center if it was visible
+            updatePokecenterVisibility(false);
         };
 
         const handlePokecenterAppearance = () => {
+            // Check if the current biome forbids a Pokecenter
+            if (currentBiome.noPokecenter) {
+                // If forbidden, immediately reset the timer for the next check
+                console.log(`PokéCenter skipped in ${currentBiome.name}. Retrying timer.`);
+                pokecenterTimer = setTimeout(handlePokecenterAppearance, calculateNextPokecenterTime());
+                return;
+            }
+
+            // Show Pokecenter
             updatePokecenterVisibility(true);
             
             // Set a timer to make the Pokecenter disappear after 60 seconds
             pokecenterVisibilityTimer = setTimeout(() => {
                 updatePokecenterVisibility(false);
-            }, 60000); // Pokecenter stays visible for 60s
+            }, 60000);
 
             // Restart the pokecenter timer for the next appearance
             pokecenterTimer = setTimeout(handlePokecenterAppearance, calculateNextPokecenterTime());
@@ -446,7 +446,6 @@
         const startTimers = () => {
             if (status === 'running') return;
             
-            // Set status and update UI
             status = 'running';
             updateStatusDisplay();
 
@@ -472,19 +471,17 @@
             if (status === 'running') {
                 pauseTimers();
             } else if (status === 'paused' || status === 'settings') {
-                if (status === 'settings') toggleSettings(); // Close settings if open
+                if (status === 'settings') toggleSettings();
                 startTimers();
             }
         };
 
         window.toggleSettings = () => {
             if (status === 'settings') {
-                // Close settings
                 status = 'paused';
                 document.getElementById('settings-pane').classList.add('hidden');
                 updateStatusDisplay();
             } else {
-                // Open settings, pause game
                 pauseTimers(); 
                 status = 'settings';
                 updateStatusDisplay();
@@ -494,42 +491,35 @@
 
         window.toggleBiomeDisabled = (biomeName) => {
             disabledBiomes[biomeName] = !disabledBiomes[biomeName];
-            updateSettingsPane(); // Rerender settings pane to show checkmark change
+            updateSettingsPane();
         };
 
         window.handleContinue = () => {
             hideEncounterModal();
             encounterPokemon = null;
-            startTimers(); // Resume simulation
+            startTimers();
         };
 
         window.handleReset = () => {
-            // 1. Clear all running timers
             clearAllTimers();
             
-            // 2. Filter biomes based on current settings
             const availableBiomes = BIOMES.filter(biome => !disabledBiomes[biome.name]);
             if (availableBiomes.length === 0) {
-                 // Safety fallback if everything is disabled
                  currentBiome = BIOMES[0]; 
             } else {
-                // 3. Select a new random starting biome from available list
                 currentBiome = availableBiomes[Math.floor(Math.random() * availableBiomes.length)];
             }
             
-            // 4. Reset UI and state
             updateBiomeDisplay(currentBiome);
             hideEncounterModal();
             updatePokecenterVisibility(false);
-            status = 'paused'; // Set to paused so startTimers can be called manually
+            status = 'paused';
             
-            // 5. Start timers after a brief moment to ensure state is set
             setTimeout(startTimers, 50); 
         };
 
         // --- Initialization ---
         window.onload = function() {
-            // Start the simulator automatically on load
             handleReset();
         };
 
