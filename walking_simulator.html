@@ -398,25 +398,27 @@ fetch('pokemon_data.json')
 
         // --- Timer Handlers ---
 
-        const handleBiomeChange = () => {
-            const availableBiomes = BIOMES.filter(biome => !disabledBiomes[biome.name] && biome.name !== currentBiome.name);
+function handleBiomeChange() {
+  const availableBiomes = BIOMES.filter(
+    biome => !disabledBiomes[biome.name] && biome.name !== currentBiome.name
+  );
 
-            if (availableBiomes.length === 0) {
-                startTimers(); 
-                return;
-            }
-            
-            const newBiome = availableBiomes[Math.floor(Math.random() * availableBiomes.length)];
-            
-            currentBiome = newBiome;
-            updateBiomeDisplay(currentBiome);
-            
-            setTimeout(startTimers, 1500);
-        };
+  if (availableBiomes.length === 0) {
+    startTimers();
+    return;
+  }
 
-        const getRandomPokemonForBiome = (biome) => {
+  const newBiome = availableBiomes[Math.floor(Math.random() * availableBiomes.length)];
+
+  currentBiome = newBiome;
+  updateBiomeDisplay(currentBiome);
+
+  setTimeout(startTimers, 1500);
+}
+
+const getRandomPokemonForBiome = (biome) => {
   // Filter Pokémon whose type matches biome allowedTypes
-  const candidates = POKEMON_DATA.filter(p => 
+  const candidates = POKEMON_DATA.filter(p =>
     p.types.some(t => biome.allowedTypes.includes(t))
   );
 
@@ -426,120 +428,146 @@ fetch('pokemon_data.json')
   return candidates[Math.floor(Math.random() * candidates.length)];
 };
 
+function handlePokecenterAppearance() {
+  // Check if the current biome forbids a Pokecenter
+  if (currentBiome.noPokecenter) {
+    // If forbidden, immediately reset the timer for the next check
+    console.log(`PokéCenter skipped in ${currentBiome.name}. Retrying timer.`);
+    pokecenterTimer = setTimeout(handlePokecenterAppearance, calculateNextPokecenterTime());
+    return;
+  }
 
+  // Show Pokecenter
+  updatePokecenterVisibility(true);
 
-        const handlePokecenterAppearance = () => {
-            // Check if the current biome forbids a Pokecenter
-            if (currentBiome.noPokecenter) {
-                // If forbidden, immediately reset the timer for the next check
-                console.log(`PokéCenter skipped in ${currentBiome.name}. Retrying timer.`);
-                pokecenterTimer = setTimeout(handlePokecenterAppearance, calculateNextPokecenterTime());
-                return;
-            }
+  // Set a timer to make the Pokecenter disappear after 60 seconds
+  pokecenterVisibilityTimer = setTimeout(() => {
+    updatePokecenterVisibility(false);
+  }, 60000);
 
-            // Show Pokecenter
-            updatePokecenterVisibility(true);
-            
-            // Set a timer to make the Pokecenter disappear after 60 seconds
-            pokecenterVisibilityTimer = setTimeout(() => {
-                updatePokecenterVisibility(false);
-            }, 60000);
+  // Restart the pokecenter timer for the next appearance
+  pokecenterTimer = setTimeout(handlePokecenterAppearance, calculateNextPokecenterTime());
+}
 
-            // Restart the pokecenter timer for the next appearance
-            pokecenterTimer = setTimeout(handlePokecenterAppearance, calculateNextPokecenterTime());
-        };
-        
-        // --- Game Control Functions ---
-        
-        const startTimers = () => {
-            if (status === 'running') return;
-            
-            status = 'running';
-            updateStatusDisplay();
-            function handleEncounter() {
+// Spawn-by-type encounter (hoisted so timers can reference it safely)
+function handleEncounter() {
   clearAllTimers();
   status = 'encounter';
   updateStatusDisplay();
 
-  const pokemon = getRandomPokemonForBiome(currentBiome); // your new type-based logic
+  const pokemon = getRandomPokemonForBiome(currentBiome);
   if (!pokemon) {
     console.warn(`No Pokémon found for biome: ${currentBiome.name}`);
     startTimers();
     return;
   }
-            // Set the Biome Change Timer
-            biomeTimer = setTimeout(handleBiomeChange, calculateNextBiomeTime());
 
-            // Set the Pokémon Encounter Timer
-            encounterTimer = setTimeout(handleEncounter, calculateNextEncounterTime());
-            
-            // Set the Pokecenter Timer
-            pokecenterTimer = setTimeout(handlePokecenterAppearance, calculateNextPokecenterTime());
-        };
+  // Build stats object for your modal
+  encounterPokemon = {
+    name: pokemon.name,
+    hp: pokemon.stats.hp,
+    atk: pokemon.stats.atk,
+    def: pokemon.stats.def,
+    spa: pokemon.stats.spa,
+    spd: pokemon.stats.spd,
+    spe: pokemon.stats.spe,
+    total: Object.values(pokemon.stats).reduce((a, b) => a + b, 0)
+  };
 
-        const pauseTimers = () => {
-            clearAllTimers();
-            if (status !== 'encounter') {
-                status = 'paused';
-                updateStatusDisplay();
-            }
-        };
+  showEncounterModal(encounterPokemon);
+  updatePokecenterVisibility(false);
+}
 
-        window.togglePlayPause = () => {
-            if (status === 'running') {
-                pauseTimers();
-            } else if (status === 'paused' || status === 'settings') {
-                if (status === 'settings') toggleSettings();
-                startTimers();
-            }
-        };
+// --- Game Control Functions ---
 
-        window.toggleSettings = () => {
-            if (status === 'settings') {
-                status = 'paused';
-                document.getElementById('settings-pane').classList.add('hidden');
-                updateStatusDisplay();
-            } else {
-                pauseTimers(); 
-                status = 'settings';
-                updateStatusDisplay();
-                updateSettingsPane();
-            }
-        };
+const startTimers = () => {
+  if (status === 'running') return;
 
-        window.toggleBiomeDisabled = (biomeName) => {
-            disabledBiomes[biomeName] = !disabledBiomes[biomeName];
-            updateSettingsPane();
-        };
+  // Safety: ensure we never stack timers
+  clearAllTimers();
 
-        window.handleContinue = () => {
-            hideEncounterModal();
-            encounterPokemon = null;
-            startTimers();
-        };
+  status = 'running';
+  updateStatusDisplay();
 
-        window.handleReset = () => {
-            clearAllTimers();
-            
-            const availableBiomes = BIOMES.filter(biome => !disabledBiomes[biome.name]);
-            if (availableBiomes.length === 0) {
-                 currentBiome = BIOMES[0]; 
-            } else {
-                currentBiome = availableBiomes[Math.floor(Math.random() * availableBiomes.length)];
-            }
-            
-            updateBiomeDisplay(currentBiome);
-            hideEncounterModal();
-            updatePokecenterVisibility(false);
-            status = 'paused';
-            
-            setTimeout(startTimers, 50); 
-        };
+  // Biome change
+  biomeTimer = setTimeout(handleBiomeChange, calculateNextBiomeTime());
 
-        // --- Initialization ---
-        window.onload = function() {
-            handleReset();
-        };
+  // Encounter
+  const encounterDelay = Number(calculateNextEncounterTime());
+  if (Number.isFinite(encounterDelay)) {
+    encounterTimer = setTimeout(handleEncounter, encounterDelay);
+  } else {
+    console.warn('Encounter timer skipped: invalid delay.');
+  }
+
+  // Pokecenter appearance
+  pokecenterTimer = setTimeout(handlePokecenterAppearance, calculateNextPokecenterTime());
+};
+
+const pauseTimers = () => {
+  clearAllTimers();
+  if (status !== 'encounter') {
+    status = 'paused';
+    updateStatusDisplay();
+  }
+};
+
+window.togglePlayPause = () => {
+  if (status === 'running') {
+    pauseTimers();
+  } else if (status === 'paused' || status === 'settings') {
+    if (status === 'settings') toggleSettings();
+    startTimers();
+  }
+};
+
+window.toggleSettings = () => {
+  if (status === 'settings') {
+    status = 'paused';
+    document.getElementById('settings-pane').classList.add('hidden');
+    updateStatusDisplay();
+  } else {
+    pauseTimers();
+    status = 'settings';
+    updateStatusDisplay();
+    updateSettingsPane();
+  }
+};
+
+window.toggleBiomeDisabled = (biomeName) => {
+  disabledBiomes[biomeName] = !disabledBiomes[biomeName];
+  updateSettingsPane();
+};
+
+window.handleContinue = () => {
+  hideEncounterModal();
+  encounterPokemon = null;
+  startTimers();
+};
+
+window.handleReset = () => {
+  clearAllTimers();
+
+  const availableBiomes = BIOMES.filter(biome => !disabledBiomes[biome.name]);
+  if (availableBiomes.length === 0) {
+    currentBiome = BIOMES[0];
+  } else {
+    currentBiome = availableBiomes[Math.floor(Math.random() * availableBiomes.length)];
+  }
+
+  updateBiomeDisplay(currentBiome);
+  hideEncounterModal();
+  updatePokecenterVisibility(false);
+  status = 'paused';
+
+  setTimeout(startTimers, 50);
+};
+
+// --- Initialization ---
+window.onload = function() {
+  handleReset();
+};
+
 
     </script>
 </body>
