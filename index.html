@@ -236,7 +236,7 @@
     </p>
 
     <button onclick="toggleListView()">View Entire List</button>
-    <button><a href="/walking_simulator.html" style="color: inherit; text-decoration: none; cursor: text; pointer-events: none;">The Walking Simulator</a>
+    <button><a href="/walking_simulator.html" style="color: inherit; text-decoration: none;">The Walking Simulator</a>
 </button>
 </div>
 
@@ -244,6 +244,8 @@
     <div class="list-header">
         <h1>Full Pokémon Roster</h1>
         <button onclick="toggleListView()" style="width: 150px;">Return to Selector</button>
+        <script>function walkingsimulatorlink(){window.location.href = '/walking_simulator.html';}</script>
+        <button onclick="walkingsimulatorlink()';">Walking Simulator</button>
     </div>
     <div id="full-list-content">
         </div>
