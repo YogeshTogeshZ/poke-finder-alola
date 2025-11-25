@@ -297,48 +297,48 @@ fetch('pokemon_data.json')
                 { label: 'Speed', value: pokemon.spe, icon: 'fa-bolt', color: 'text-yellow-600' },
             ];
 
-            const statLines = stats.map(stat => `
-                <div class="flex justify-between items-center py-2 border-b border-gray-200 last:border-b-0">
-                    <div class="flex items-center text-gray-600 font-medium">
-                        <i class="fas ${stat.icon} w-5 h-5 mr-2 ${stat.color.replace('text-', 'text-')}"></i>
-                        <span>${stat.label}</span>
-                    </div>
-                    <span class="text-xl font-bold ${stat.color}">${stat.value}</span>
-                </div>
-            `).join('');
+            function showEncounterModal(pokemon) {
+  const modal = document.getElementById('encounter-modal');
 
-            modal.innerHTML = `
-                <div class="bg-white p-8 rounded-3xl shadow-2xl max-w-lg w-full transform transition-all scale-100 border-4 border-yellow-400">
-                    <div class="text-center mb-6">
-                        <div class="text-6xl mb-2">
-                            <span role="img" aria-label="pokemon">⚡</span> 
-                        </div>
-                        <h2 class="text-4xl font-extrabold text-gray-900 mt-2">
-                            Wild <span class="text-indigo-600">${pokemon.name}</span> Appeared!
-                        </h2>
-                        <p class="text-xl text-gray-500 mt-1 font-medium">Simulation Paused</p>
-                    </div>
+  const movesList = pokemon.moves.map(move => `
+    <li class="py-1 px-2 bg-indigo-50 rounded-md mb-1 text-gray-700 font-medium">
+      ${move}
+    </li>
+  `).join('');
 
-                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
-                        <h3 class="text-2xl font-bold mb-3 text-gray-700 flex items-center">
-                            <i class="fas fa-dice mr-2 text-red-500"></i> Base Stats
-                        </h3>
-                        ${statLines}
-                        <div class="mt-4 pt-3 border-t-2 border-gray-300 text-center">
-                            <p class="text-2xl font-extrabold text-gray-800">TOTAL: ${pokemon.total}</p>
-                        </div>
-                    </div>
+  modal.innerHTML = `
+    <div class="bg-white p-8 rounded-3xl shadow-2xl max-w-lg w-full border-4 border-yellow-400">
+      <div class="text-center mb-6">
+        <div class="text-6xl mb-2">⚡</div>
+        <h2 class="text-4xl font-extrabold text-gray-900 mt-2">
+          Wild <span class="text-indigo-600">${pokemon.name}</span> Appeared!
+        </h2>
+        <p class="text-xl text-gray-500 mt-1 font-medium">Simulation Paused</p>
+      </div>
 
-                    <button
-                        onclick="handleContinue()"
-                        class="w-full mt-6 py-4 px-4 bg-indigo-600 hover:bg-indigo-700 text-white text-xl font-bold rounded-xl shadow-lg transition duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50"
-                    >
-                        Continue Journey
-                    </button>
-                </div>
-            `;
-            modal.classList.remove('hidden');
-        };
+      <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+        <h3 class="text-2xl font-bold mb-3 text-gray-700 flex items-center">
+          <i class="fas fa-heart mr-2 text-red-500"></i> HP
+        </h3>
+        <p class="text-3xl font-extrabold text-red-600 text-center mb-4">${pokemon.hp}</p>
+
+        <h3 class="text-2xl font-bold mb-3 text-gray-700 flex items-center">
+          <i class="fas fa-fist-raised mr-2 text-indigo-500"></i> Moves
+        </h3>
+        <ul class="list-none">${movesList}</ul>
+      </div>
+
+      <button
+        onclick="handleContinue()"
+        class="w-full mt-6 py-4 px-4 bg-indigo-600 hover:bg-indigo-700 text-white text-xl font-bold rounded-xl shadow-lg transition duration-200 transform hover:scale-[1.02]"
+      >
+        Continue Journey
+      </button>
+    </div>
+  `;
+  modal.classList.remove('hidden');
+}
+
 
         const hideEncounterModal = () => {
             document.getElementById('encounter-modal').classList.add('hidden');
@@ -462,17 +462,17 @@ function handleEncounter() {
     return;
   }
 
-  // Build stats object for your modal
+  // Build encounter object with HP and moves only
   encounterPokemon = {
     name: pokemon.name,
     hp: pokemon.stats.hp,
-    atk: pokemon.stats.atk,
-    def: pokemon.stats.def,
-    spa: pokemon.stats.spa,
-    spd: pokemon.stats.spd,
-    spe: pokemon.stats.spe,
-    total: Object.values(pokemon.stats).reduce((a, b) => a + b, 0)
+    moves: pokemon.moves.map(m => m[0]) // just the move names
   };
+
+  showEncounterModal(encounterPokemon);
+  updatePokecenterVisibility(false);
+}
+
 
   showEncounterModal(encounterPokemon);
   updatePokecenterVisibility(false);
