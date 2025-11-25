@@ -360,14 +360,6 @@ function handleReroll() {
 }
 
 
-
-        function hideEncounterModal() {
-  const modal = document.getElementById('encounter-modal');
-  modal.classList.add('hidden');
-  modal.innerHTML = ''; // clear modal content
-}
-
-
         const updateSettingsPane = () => {
             const pane = document.getElementById('settings-pane');
             pane.classList.remove('hidden');
@@ -567,6 +559,12 @@ window.handleContinue = () => {
   encounterPokemon = null;
   startTimers();
 };
+function hideEncounterModal() {
+  const modal = document.getElementById('encounter-modal');
+  if (!modal) return; // safety check
+  modal.classList.add('hidden');   // hide the modal
+  modal.innerHTML = '';            // clear its content
+}
 
 window.handleReset = () => {
   clearAllTimers();
