@@ -152,14 +152,21 @@
     </div>
 
     <script>
+        let POKEMON_DATA = [];
+
+fetch('pokemon_data.json')
+  .then(res => res.json())
+  .then(data => { POKEMON_DATA = data; });
+
         // --- Configuration Data ---
         const BIOMES = [
-          { name: 'Lush Jungle', type: 'jungle', color: 'bg-green-700', icon: 'fas fa-tree', text: 'text-green-200', pokemonNames: ['Dartrix', 'Bounsweet', 'Trumbeak', 'Fomantis'] },
-          { name: 'Sandy Beach', type: 'water', color: 'bg-blue-500', icon: 'fas fa-anchor', text: 'text-blue-100', pokemonNames: ['Wimpod', 'Bruxish', 'Sandygast', 'Wishiwashi'] },
-          { name: 'Volcano Park', type: 'desert', color: 'bg-red-800', icon: 'fas fa-fire', text: 'text-red-200', pokemonNames: ['Salandit', 'Rockruff', 'Turtonator', 'Torkoal'], noPokecenter: true },
-          { name: 'Spooky Caves', type: 'cave', color: 'bg-gray-700', icon: 'fas fa-mountain', text: 'text-gray-200', pokemonNames: ['Jangmo-o', 'Noibat', 'Carbink', 'Mimikyu'], noPokecenter: true },
-          { name: 'Hau\'oli City', type: 'city', color: 'bg-indigo-600', icon: 'fas fa-city', text: 'text-indigo-200', pokemonNames: ['Meowth (Alola)', 'Klefki', 'Dedenne', 'Crabrawler'] },
-        ];
+  { name: 'Lush Jungle', type: 'jungle', color: 'bg-green-700', icon: 'fas fa-tree', text: 'text-green-200', allowedTypes: ['grass', 'bug', 'fairy'] },
+  { name: 'Sandy Beach', type: 'water', color: 'bg-blue-500', icon: 'fas fa-anchor', text: 'text-blue-100', allowedTypes: ['water', 'ice'] },
+  { name: 'Volcano Park', type: 'desert', color: 'bg-red-800', icon: 'fas fa-fire', text: 'text-red-200', allowedTypes: ['fire', 'rock', 'ground'], noPokecenter: true },
+  { name: 'Spooky Caves', type: 'cave', color: 'bg-gray-700', icon: 'fas fa-mountain', text: 'text-gray-200', allowedTypes: ['ghost', 'dark', 'dragon'], noPokecenter: true },
+  { name: 'Hau\'oli City', type: 'city', color: 'bg-indigo-600', icon: 'fas fa-city', text: 'text-indigo-200', allowedTypes: ['normal', 'electric', 'steel', 'psychic'] },
+];
+
 
         // --- Global State ---
         let status = 'paused'; // 'running', 'paused', 'encounter', 'settings'
@@ -407,18 +414,19 @@
             setTimeout(startTimers, 1500);
         };
 
-        const handleEncounter = () => {
-            clearAllTimers();
-            status = 'encounter';
-            updateStatusDisplay();
+        const getRandomPokemonForBiome = (biome) => {
+  // Filter Pokémon whose type matches biome allowedTypes
+  const candidates = POKEMON_DATA.filter(p => 
+    p.types.some(t => biome.allowedTypes.includes(t))
+  );
 
-            const names = currentBiome.pokemonNames;
-            const pokemonName = names[Math.floor(Math.random() * names.length)];
-            encounterPokemon = getPokemonDetails(pokemonName);
+  if (candidates.length === 0) return null;
 
-            showEncounterModal(encounterPokemon);
-            updatePokecenterVisibility(false);
-        };
+  // Pick random Pokémon from candidates
+  return candidates[Math.floor(Math.random() * candidates.length)];
+};
+
+
 
         const handlePokecenterAppearance = () => {
             // Check if the current biome forbids a Pokecenter
